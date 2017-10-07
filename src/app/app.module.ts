@@ -1,3 +1,4 @@
+import { ProfileComponent } from './component/profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -34,6 +35,7 @@ export const routes: Routes = [
   { path: '',         component: HomeComponent   },
   { path: 'login',    component: LoginComponent  }, 
   { path: 'signup',   component: SignupComponent },
+  { path: 'profile',  component: ProfileComponent,  canActivate: [ SessionService ]  },
   { path: 'events',   component: EventsComponent, 
                       children: [ { path: ':id', component: EventComponent }] 
   },
@@ -62,6 +64,7 @@ export const routes: Routes = [
     HeroComponent,
     HostVsguestComponent,
     JoinComponent,
+    ProfileComponent,
     Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent
   ],
   imports: [
