@@ -3,6 +3,7 @@ import { Http, Headers, RequestOptions  } from '@angular/http';
 import { Router, CanActivate } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
+import jwtDecode from 'jwt-decode';
 
 @Injectable()
 export class SessionService implements CanActivate {
@@ -10,7 +11,7 @@ export class SessionService implements CanActivate {
   //session is in appmodule so that all component can access the following three variables token, isAuth and user
   public token : String ='';
   public isAuth: boolean = false;
-  public user = {};
+  public user: any = {};
   private BASE_URL: String = 'http://localhost:3000';
   constructor( private http: Http, private router: Router ) { }
 
@@ -46,7 +47,7 @@ export class SessionService implements CanActivate {
     .map((res) => res.json())
     .map((res) => {
       console.log("login success session service");
-      const { message, token, user } = res
+      const { token, user } = res
       console.log('token', token);
 
       if(token){
@@ -62,11 +63,35 @@ export class SessionService implements CanActivate {
         localStorage.setItem('user', JSON.stringify(this.user));
 
         return true;
-        }else{
+      } else {
         return res;
       }
     });
 
   }//res => res.json().data as Query[]; WHAT DOES THIS LINE DO
   
+  signup(user){
+    return this.http.post(`${this.BASE_URL}/signup`, user)
+      .map((res)=> res.json())
+      .map((res)=>{
+        const {token, user } = res
+     
+      if(token){
+        this.token = token;
+        this.user = jwtDecode(token);
+        console.log(this.user)
+        this.isAuth = true;
+        localStorage.setItem( 'token', token);
+        localStorage.setItem( user, JSON.stringify(this.user));
+
+        return this.user
+
+      }else{
+        return false;
+      }
+
+    })
+    
+  }
+
 }
