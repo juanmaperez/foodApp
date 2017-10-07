@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'host123',
   templateUrl: './host123.component.html',
-  styleUrls: ['./host123.component.css']
+  styleUrls: ['./host123.component.scss']
 })
 export class Host123Component implements OnInit {
 
