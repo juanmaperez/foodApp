@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
-import { SessionService } from './session.service'
+import { SessionService } from './session.service';
 
 
 @Injectable()
@@ -14,6 +14,19 @@ export class ApiService {
       private session : SessionService
     ) { }
 
+  setHeaders(){
+    let headers = new Headers({ 'Authorization': 'JWT ' +  this.session.token });
+    let options = new RequestOptions({ headers : headers });
+    return options
+  }
+
+  getUserData(id){
+    console.log(`${this.BASE_URL}/api/users/${id}`)
+    const options = this.setHeaders()
+    return this.http.get(`${this.BASE_URL}/api/users/${id}`, options )
+      .map((res)=>res.json());
+  }  
+  
   getList() {
     console.log("asd",this.session.token)
     let headers = new Headers({ 'Authorization': 'JWT ' +  this.session.token });
@@ -36,5 +49,6 @@ export class ApiService {
     return this.http.delete(`${this.BASE_URL}/api/phones/${id}`)
       .map((res) => res.json());
   }
+
 }
 

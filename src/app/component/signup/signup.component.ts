@@ -26,11 +26,9 @@ export class SignupComponent implements OnInit {
   }
 
   submitSignup(){
-    console.log("hola")
     this.session.signup(this.user)
       .subscribe(
         (data)=>{
-          console.log("data info", data);
           this.router.navigate(['/profile']);
         }, 
         (err)=>{
