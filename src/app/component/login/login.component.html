@@ -1,4 +1,13 @@
-<div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-xs-4">
+      <form (ngSubmit)="submitLogin()" #myForm="ngForm">
+        <input value="" name="username" [(ngModel)]="user.username" placeholder="username">
+        <input value="" name="password" [(ngModel)]="user.password" placeholder="password">
+        <button type="submit">LOG IN</button>
+      </form>
 
-hola
+      <p>{{message}}</p>
+    </div>
+  </div>
 </div>
