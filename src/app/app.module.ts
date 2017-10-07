@@ -23,25 +23,32 @@ import { SignupComponent } from './component/signup/signup.component';
 import { Host123Component } from './component/host123/host123.component';
 import { Guest123Component } from './component/guest123/guest123.component';
 import { HostComponent } from './component/host/host.component';
-import { JoinCommunityComponent } from './component/join-community/join-community.component'; 
-
-
+import { JoinCommunityComponent } from './component/join-community/join-community.component';
+import { HostsComponent } from './component/hosts/hosts.component';
+import { EventsComponent } from './component/events/events.component';
+import { EventComponent } from './component/event/event.component'; 
 
 
 // canActivate
 export const routes: Routes = [
-  {
-    path: '', component: LayoutComponent,
-      children: [
-        { path: 'hero',     component: HeroComponent,  canActivate: [ SessionService ] },
-        { path: 'host/:id', component: HostComponent,     canActivate: [ SessionService ] },
-      ] },
-  { path: 'home',  component: HomeComponent },    
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: '',         component: HomeComponent   },
+  { path: 'login',    component: LoginComponent  }, 
+  { path: 'signup',   component: SignupComponent },
+  { path: 'events',   component: EventsComponent, 
+                      children: [ { path: ':id', component: EventComponent }] 
+  },
+  { path: 'hosts',    component: HostsComponent,
+                      children: [ { path: ':id', component: HostComponent }] 
+  },  
   { path: '**', redirectTo: '' }
   
 ];
+
+/*children: [
+             
+        { path: 'login',  component: LoginComponent,  canActivate: [ SessionService ] },
+        { path: 'signup', component: SignupComponent,     canActivate: [ SessionService ] },
+      ]*/
 
 @NgModule({
   declarations: [
@@ -55,7 +62,7 @@ export const routes: Routes = [
     HeroComponent,
     HostVsguestComponent,
     JoinComponent,
-    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent
+    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent
   ],
   imports: [
     BrowserModule,
