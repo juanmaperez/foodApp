@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-host',
+  selector: 'host',
   templateUrl: './host.component.html',
   styleUrls: ['./host.component.scss']
 })
