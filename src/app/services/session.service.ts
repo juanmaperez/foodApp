@@ -40,13 +40,13 @@ export class SessionService implements CanActivate {
 
   }
 
-
   login(user){
-
+    console.log("in login");
     return this.http.post(`${this.BASE_URL}/login`, user)
     .map((res) => res.json())
     .map((res) => {
-      const { token, user } = res
+      console.log("login success session service");
+      const { message, token, user } = res
       console.log('token', token);
 
       if(token){
@@ -63,9 +63,10 @@ export class SessionService implements CanActivate {
 
         return true;
         }else{
-        return false;
+        return res;
       }
     });
 
   }//res => res.json().data as Query[]; WHAT DOES THIS LINE DO
+  
 }
