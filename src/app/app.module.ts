@@ -1,10 +1,10 @@
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from "@angular/router";
 import { HttpModule } from '@angular/http';
 import { FileSelectDirective } from "ng2-file-upload";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -24,6 +24,9 @@ import { Host123Component } from './component/host123/host123.component';
 import { Guest123Component } from './component/guest123/guest123.component';
 import { HostComponent } from './component/host/host.component';
 import { JoinCommunityComponent } from './component/join-community/join-community.component'; 
+
+
+
 
 // canActivate
 export const routes: Routes = [
