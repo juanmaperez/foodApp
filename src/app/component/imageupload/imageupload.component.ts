@@ -12,17 +12,13 @@ import { FileUploader, FileSelectDirective }  from "ng2-file-upload";
 
 export class ImageuploadComponent implements OnInit {
  
-  id : "";
-  $ : any;
+  id : string = '';
+
   imagepreview : any;
 
   private BASE_URL: String = 'http://localhost:3000/api';
   
-  uploader: FileUploader = new FileUploader({
-   
-    url: `${this.BASE_URL}/imageupload/${this.id}`
-
-  });
+  uploader: FileUploader;
 
   file = { 
     name : ""
@@ -35,6 +31,11 @@ export class ImageuploadComponent implements OnInit {
   ngOnInit() {
     this.id=this.session.user._id;
     console.log("this.id", this.id);
+    this.uploader = new FileUploader({
+      
+       url: `${this.BASE_URL}/imageupload/${this.id}`
+   
+     });
 
     this.uploader.onSuccessItem = (item, base64) => {
      

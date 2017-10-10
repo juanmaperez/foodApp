@@ -30,7 +30,7 @@ export class ApiService {
   editProfileData(userdata, id){
     console.log("inside editProfilData + id", id);
     console.log("userdata", userdata);
-    
+    const options = this.setHeaders();
     return this.http.put(`${this.BASE_URL}/api/users/${id}`, userdata)
       .map((res)=>res.json());
   }

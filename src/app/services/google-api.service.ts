@@ -15,6 +15,9 @@ export class GoogleApiService {
 
   ) { }
 
-  
+  /*callGoogleApi(){
+    console.log("calling googleApi");
+    return this.http.get("https://maps.googleapis.com/maps/api/js?key=AIzaSyCH9a2tBZIX_OwjIziNi3a62tR1Z-ScO-k&libraries=places&callback=onGoogleApiReady")
+  }*/
 
 }

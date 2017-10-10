@@ -6,6 +6,7 @@ import { RouterModule, Routes }     from "@angular/router";
 import { HttpModule }               from '@angular/http';
 import { FileSelectDirective }      from "ng2-file-upload";
 import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
+import { NoopAnimationsModule }     from '@angular/platform-browser/animations';
 import { AgmCoreModule }            from '@agm/core';
 import { environment }              from '../environments/environment'
 
@@ -85,7 +86,7 @@ export const routes: Routes = [
     EditProfileComponent,
     ImageuploadComponent,
     GoogleMapComponent,
-    FileSelectDirective
+    FileSelectDirective,
   ],
   imports: [
     BrowserModule,

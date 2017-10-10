@@ -6,6 +6,8 @@ import { GoogleApiService }             from './../../services/google-api.servic
 import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { }                              from 'googlemaps';
 
+declare var google: any;
+
 @Component({
   selector: 'edit-profile',
   templateUrl: './edit-profile.component.html',
@@ -47,12 +49,10 @@ export class EditProfileComponent implements OnInit {
   ngAfterViewInit(){
 
     this._mapsAPILoader.load().then(() => {
-        let google:   any = {};
-        let geocoder: any = {};
         console.log(google);
         const input = document.getElementById('street');
         const autocomplete = new google.maps.places.Autocomplete(input);
-        geocoder = new google.maps.Geocoder;
+        const geocoder = new google.maps.Geocoder;
       
         autocomplete.addListener('place_changed', () => {
       
@@ -69,7 +69,7 @@ export class EditProfileComponent implements OnInit {
                 console.log("lng" , Lat);
                 this.user.address = place.name;
                 this.user.address_lat  = Lat;
-                this.user.address_lat  = Lng;
+                this.user.address_lng  = Lng;
                  
               }//RUN GEOCODER TO GET GEOMETRY DATA IF PLACE ID UNDEFINED
               else if(!place.place_id){
@@ -85,7 +85,7 @@ export class EditProfileComponent implements OnInit {
                             // STORE INFO
                             this.user.address = place.name;
                             this.user.address_lat  = Lat;
-                            this.user.address_lat  = Lng;
+                            this.user.address_lng  = Lng;
             
                           } 
                     }
