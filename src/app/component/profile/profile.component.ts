@@ -11,20 +11,7 @@ import { ApiService } from './../../services/api.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: any = {
-    _id : "",
-    name: "",
-    email: "",
-    age: "",
-    description: "",
-    image: "",
-    foodSpecialities: [],
-    address:  { },
-    city: "",
-    _eventsCreated: [],
-    _eventsAssisted: []
-    
-  };
+  user: any = {};
   userId: any = "";
 
 
@@ -35,7 +22,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.userId = this.session.user._id
+    this.userId = this.session.user._id;
     this.api.getUserData(this.userId)
       .subscribe((userdata) => {
         this.user = userdata;

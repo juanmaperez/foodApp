@@ -1,4 +1,4 @@
-import { ProfileComponent }         from './component/profile/profile.component';
+//********************************* PACKAGES**************************************/
 import { BrowserModule }            from '@angular/platform-browser';
 import { NgModule }                 from '@angular/core';
 import { FormsModule }              from '@angular/forms';
@@ -6,17 +6,21 @@ import { RouterModule, Routes }     from "@angular/router";
 import { HttpModule }               from '@angular/http';
 import { FileSelectDirective }      from "ng2-file-upload";
 import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
+import { AgmCoreModule }            from '@agm/core';
+import { environment }              from '../environments/environment'
 
+//********************************* SERVICES**************************************/
+import { ApiService }               from './services/api.service';
+import { SessionService }           from './services/session.service';
+import { GoogleApiService }         from './services/google-api.service';
+
+//********************************* COMPONENTS**************************************/
 import { AppComponent }             from './app.component';
 import { HomeComponent }            from './component/home/home.component';
 import { LoginComponent }           from './component/login/login.component';
-
 import { LayoutComponent }          from './component/layout/layout.component';
 import { NavbarComponent }          from './component/navbar/navbar.component';
 import { FooterComponent }          from './component/footer/footer.component';
-import { ApiService }               from './services/api.service';
-import { SessionService }           from './services/session.service';
-
 import { HeroComponent }            from './component/hero/hero.component';
 import { HostVsguestComponent }     from './component/host-vsguest/host-vsguest.component';
 import { JoinComponent }            from './component/join/join.component';
@@ -30,7 +34,10 @@ import { EventsComponent }          from './component/events/events.component';
 import { EventComponent }           from './component/event/event.component';
 import { CategoriesComponent }      from './component/categories/categories.component';
 import { CreateEventComponent }     from './component/create-event/create-event.component'; 
-import { EditProfileComponent }     from './component/edit-profile/edit-profile.component'; 
+import { EditProfileComponent }     from './component/edit-profile/edit-profile.component';
+import { ImageuploadComponent }     from './component/imageupload/imageupload.component'; 
+import { ProfileComponent }         from './component/profile/profile.component';
+import { GoogleMapComponent }       from './component/google-map/google-map.component';
 
 // canActivate
 export const routes: Routes = [
@@ -51,11 +58,6 @@ export const routes: Routes = [
   
 ];
 
-/*children: [
-             
-        { path: 'login',  component: LoginComponent,  canActivate: [ SessionService ] },
-        { path: 'signup', component: SignupComponent,     canActivate: [ SessionService ] },
-      ]*/
 
 @NgModule({
   declarations: [
@@ -80,15 +82,25 @@ export const routes: Routes = [
     EventComponent, 
     CategoriesComponent, 
     CreateEventComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    ImageuploadComponent,
+    GoogleMapComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AgmCoreModule.forRoot({
+      apiKey: environment.apiKey,
+      libraries: ['places']
+    })
   ],
-  providers: [ApiService , SessionService],
+
+  providers: [ApiService , SessionService, GoogleApiService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

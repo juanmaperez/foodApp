@@ -27,6 +27,14 @@ export class ApiService {
       .map((res)=>res.json());
   }  
   
+  editProfileData(userdata, id){
+    console.log("inside editProfilData + id", id);
+    console.log("userdata", userdata);
+    
+    return this.http.put(`${this.BASE_URL}/api/users/${id}`, userdata)
+      .map((res)=>res.json());
+  }
+
   getList() {
     console.log("asd",this.session.token)
     let headers = new Headers({ 'Authorization': 'JWT ' +  this.session.token });

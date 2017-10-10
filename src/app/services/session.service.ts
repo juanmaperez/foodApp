@@ -79,10 +79,12 @@ export class SessionService implements CanActivate {
       if(token){
         this.token = token;
         this.user = jwtDecode(token);
-        console.log(this.user)
+        console.log("mynewuser", this.user);
         this.isAuth = true;
         localStorage.setItem( 'token', token);
         localStorage.setItem( user, JSON.stringify(this.user));
+        console.log(localStorage.getItem( user));
+        
 
         return this.user
 
