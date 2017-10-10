@@ -1,5 +1,9 @@
 <div class="container">
   <div class="row">
-    <h1>{{user.username}}</h1>
+    <h1 *ngIf="user.username">{{user.username}}</h1>
+    <p  *ngIf="user.description">{{user.description}}</p>
+    <p  *ngIf="user.age">{{user.age}}</p>
+    <p  *ngIf="user.city">{{user.city}}</p>
+    <p  *ngIf="user.image"><img src="{{user.image}}"></p>
   </div>
 </div>

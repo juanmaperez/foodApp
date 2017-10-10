@@ -1,3 +1,19 @@
-<p>
-  edit-profile works!
-</p>
+
+<div class="container">
+
+  <div class="row" id="userdata-wrapper">
+    <div class="col-md-4 col-sm-4 col-xs-4">
+        <form (ngSubmit)="submitProfileData()" #myForm="ngForm">
+          <input  value="" type="text" name="username" placeholder="username" [(ngModel)]="user.username">
+          <input  value="" type="text" name="email" placeholder="email" [(ngModel)]="user.email">
+          <textarea  value="" type="textarea" name="description" placeholder="A few words about you" [(ngModel)]="user.description"></textarea>
+          <input value="" type="text" name="age" placeholder="age" [(ngModel)]="user.age">
+          <input  id="street" value="" type="text" name="street" placeholder="street" [(ngModel)]="user.street">
+          <input  value="" type="text" name="city" placeholder="city" [(ngModel)]="user.city">
+          <button type="submit">SAVE</button>
+        </form>
+      </div>
+    </div>
+</div>
+<agm-map></agm-map>
+<imageupload></imageupload>
