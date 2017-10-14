@@ -1,3 +1,11 @@
-<p>
-  events works!
-</p>
+<div class="events container container-fluid">
+  <div class="row">
+    <h2>
+      Next Events
+    </h2>
+    <hr>
+      <div class="event-wrapper col-md-4 col-sm-3 col-xs-1" *ngFor="let event of events">
+        <event [event]="event"></event>
+      </div>
+  </div>
+</div>

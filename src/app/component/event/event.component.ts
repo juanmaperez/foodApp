@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ApiService } from './../../services/api.service';
+import { environment } from './../../../environments/environment';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'event',
@@ -8,7 +10,8 @@ import { Component, OnInit } from '@angular/core';
 export class EventComponent implements OnInit {
 
   constructor() { }
-
+  @Input() event: any;
+  
   ngOnInit() {
   }
 

@@ -50,5 +50,13 @@ export class ApiService {
       .map((res) => res.json());
   }
 
+
+  /*============ Events Functions ==================*/
+  getEventsList(){
+    return this.http.get(`${this.BASE_URL}/api/events/`)
+    .map((res) => res.json());
+  }
 }
+
+
 

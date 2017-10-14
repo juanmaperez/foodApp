@@ -28,6 +28,7 @@ import { JoinCommunityComponent } from './component/join-community/join-communit
 import { HostsComponent } from './component/hosts/hosts.component';
 import { EventsComponent } from './component/events/events.component';
 import { EventComponent } from './component/event/event.component'; 
+import { EventDetailComponent } from './component/event-detail/event-detail.component';
 
 
 // canActivate
@@ -36,8 +37,8 @@ export const routes: Routes = [
   { path: 'login',    component: LoginComponent  }, 
   { path: 'signup',   component: SignupComponent },
   { path: 'profile',  component: ProfileComponent,  canActivate: [ SessionService ]  },
-  { path: 'events',   component: EventsComponent, 
-                      children: [ { path: ':id', component: EventComponent }] 
+  { path: 'events',   component: EventsComponent,
+                      children: [ { path: ':id', component: EventDetailComponent }] 
   },
   { path: 'hosts',    component: HostsComponent,
                       children: [ { path: ':id', component: HostComponent }] 
@@ -65,7 +66,7 @@ export const routes: Routes = [
     HostVsguestComponent,
     JoinComponent,
     ProfileComponent,
-    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent
+    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent
   ],
   imports: [
     BrowserModule,
