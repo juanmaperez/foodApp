@@ -1,3 +1,4 @@
+import { GoogleApiService } from './services/google-api.service';
 import { ProfileComponent } from './component/profile/profile.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,6 +7,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { HttpModule } from '@angular/http';
 import { FileSelectDirective } from "ng2-file-upload";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AgmCoreModule } from '@agm/core';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './component/home/home.component';
@@ -16,6 +19,8 @@ import { NavbarComponent } from './component/navbar/navbar.component';
 import { FooterComponent } from './component/footer/footer.component';
 import { ApiService } from './services/api.service';
 import { SessionService } from './services/session.service';
+import { environment } from './../environments/environment';
+
 
 import { HeroComponent } from './component/hero/hero.component';
 import { HostVsguestComponent } from './component/host-vsguest/host-vsguest.component';
@@ -29,6 +34,8 @@ import { HostsComponent } from './component/hosts/hosts.component';
 import { EventsComponent } from './component/events/events.component';
 import { EventComponent } from './component/event/event.component'; 
 import { EventDetailComponent } from './component/event-detail/event-detail.component';
+import { AddEventFormComponent } from './component/add-event-form/add-event-form.component';
+import { EventsManagerComponent } from './component/events-manager/events-manager.component';
 
 
 // canActivate
@@ -37,8 +44,11 @@ export const routes: Routes = [
   { path: 'login',    component: LoginComponent  }, 
   { path: 'signup',   component: SignupComponent },
   { path: 'profile',  component: ProfileComponent,  canActivate: [ SessionService ]  },
-  { path: 'events',   component: EventsComponent,
-                      children: [ { path: ':id', component: EventDetailComponent }] 
+  { path: 'events',   component: EventsManagerComponent,
+                      children: [ 
+                        { path: '', component: EventsComponent },
+                        { path: 'add', component: AddEventFormComponent, canActivate: [SessionService] },
+                        { path: ':id', component: EventDetailComponent, canActivate: [SessionService] }] 
   },
   { path: 'hosts',    component: HostsComponent,
                       children: [ { path: ':id', component: HostComponent }] 
@@ -66,15 +76,19 @@ export const routes: Routes = [
     HostVsguestComponent,
     JoinComponent,
     ProfileComponent,
-    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent
+    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, AddEventFormComponent, EventsManagerComponent
   ],
   imports: [
+    AgmCoreModule.forRoot({ 
+      apiKey: environment.googleMapsApiKey,
+      libraries: ["places"]
+    }),
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ApiService , SessionService],
+  providers: [ApiService , SessionService, GoogleApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
