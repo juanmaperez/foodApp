@@ -1,9 +1,102 @@
 <div class="container">
-  <div class="row">
-    <h1 *ngIf="user.username">{{user.username}}</h1>
-    <p  *ngIf="user.description">{{user.description}}</p>
-    <p  *ngIf="user.age">{{user.age}}</p>
-    <p  *ngIf="user.city">{{user.city}}</p>
-    <p  *ngIf="user.image"><img src="{{user.image}}"></p>
-  </div>
+  <div id="profilewrapper" class="row">
+      
+       <div class="profiledata col-md-6 col-sm-4 col-xs-4">
+         <p class="profileimage" *ngIf="user.image"><img src="{{user.image}}" width="200"></p>
+         <p class="profileimage"><img src="https://www.sideshowtoy.com/photo.php?sku=400302" width="200"></p>
+      
+          <h1 class="username" *ngIf="user.username">{{user.username}}</h1>
+          <div class="review-overall-title">84% positive Ratings</div>
+          <div class="star-ratings overall">
+              <div class="star-ratings-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+          </div>
+          <p *ngIf="user.description"><span class="aboutme">About me </span> {{user.description}}</p>
+          <p *ngIf="user.age"> <span class="age">I am </span> {{user.age}}<span  class="age">&nbsp;years old</span> </p>
+          <p *ngIf="user.city"><span class="city">I live in </span> {{user.city}}</p>
+        
+        </div>
+
+       
+          
+
+        <div class="col-md-6 col-sm-4 col-xs-4">
+                  
+            <div class="star-ratings individual">
+
+                <div class="star-ratings-top" style="width: 24%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <div>
+              <p class="review-title">Excellent</p>
+              <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
+            </div>
+            <div class="star-ratings individual">
+                <div class="star-ratings-top" style="width: 60%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <div>
+                <p class="review-title">Great</p>
+                <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </p>
+            </div>
+            <div class="star-ratings individual">
+                <div class="star-ratings-top" style="width: 95%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>
+            <div>  
+              <p class="review-title">Interesting fusion</p>
+              <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
+            </div>
+            <div class="star-ratings individual">
+                <div class="star-ratings-top" style="width: 66%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+            </div>    
+            <div>
+              <p class="review-title">Great host</p>
+              <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
+            </div>
+        </div>
+      
+   </div>
+        <div class="EVENTSWRAPPER col-md-10 col-sm-4 col-xs-4">
+
+          <h4>Events scheduled by {{ user.username }}</h4>
+          <div class="eventwrapper col-md-5 col-sm-4 col-xs-4">
+            
+                <img class="eventimage" src="https://res.cloudinary.com/eatwith/image/upload/c_fill,f_auto,fl_progressive,h_250,q_auto,w_340/v1/user_162148/oidkf80o4wwjkog6vwfk.jpg">
+                <p class="shortinfo"><img class="user-img-sm" src="https://www.sideshowtoy.com/photo.php?sku=400302" width="60">{{user.username}} in {{user.city}} Kochstil </p>
+                <p class="eventtitle">EVENT TITLE</p>
+                <hr>
+                <p class="event-description">Event description Event description Event description Event description</p>
+                <p class="event-price">90€</p>
+            
+          </div>
+          
+          <div class="eventwrapper col-md-5 col-sm-4 col-xs-4">
+              
+                  <img class="eventimage" src="https://res.cloudinary.com/eatwith/image/upload/c_fill,f_auto,fl_progressive,h_250,q_auto,w_340/v1/user_162148/oidkf80o4wwjkog6vwfk.jpg">
+                  <p class="shortinfo"><img class="user-img-sm" src="https://www.sideshowtoy.com/photo.php?sku=400302" width="60">{{user.username}} in {{user.city}} Kochstil </p>
+                  <p class="eventtitle">EVENT TITLE</p>
+                  <hr>
+                  <p class="event-description">Event description Event description Event description Event description</p>
+                  <p class="event-price">90€</p>
+              
+          </div>
+      </div>
+      <div class="row">
+
+          <div class="photogallery col-md-10">
+              <div class="pics">
+                <img src="https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/7812/SITours/london-food-walking-tour-london-bridge-and-borough-market-in-london-337617.jpg">
+  
+                <img src="https://www.fera.co.uk/media/catalog/category/food-selection.jpg">
+                <img src="https://media-cdn.urbanadventures.com/data/120/tour_860/c-fakepath-tour-hoi-an-food-adventure-lead.jpg">
+                <img src="https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/7812/SITours/london-food-walking-tour-london-bridge-and-borough-market-in-london-337617.jpg">
+                <img src="http://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/2/6/0/FNK_Food-That-Looks-Like-Flowers-Opener_s4x3.jpg.rend.hgtvcom.966.725.suffix/1486405265200.jpeg" width="200">
+  
+              </div>
+
+      </div>
+  
+  <h4>Past events hosted by {{ user.username }}</h4>
 </div>

@@ -1,10 +1,89 @@
 
-#userdata-wrapper{ margin-top: 100px;  }
+#userdata-wrapper{ margin-top: 100px; font-family: "Duru Sans"; }
+h3{ font-family: "Dorsa"; font-size: 46px; letter-spacing: 2px}
+h4{ font-family: "Duru Sans"; font-size: 18px; margin-top: 40px; margin-bottom: 20px}
+p{ margin-top: 15px; margin-bottom: 6px; font-size: 15px; }
+input{ font-size: 15px; line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 55px; padding-left: 10px; padding-right: 10px;  }
+textarea { font-size: 15px; height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
 
-input{ line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 40px; padding-left: 10px; padding-right: 10px;  }
-textarea { height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
-//input[type=checkbox]#workshop:after{ content: 'workshop'; .size( 100px ); .font( 16px; ); position: absolute; left: 25px; top: -6px; .c( @white ) }
-//input[type=checkbox]#privateclasses:after{ content: 'private classes'; .size( 140px ); .font( 16px; ); position: absolute; left: 25px; top: -6px; .c( @white ) }
-//input[type=checkbox]#tedtalk:after{ content: 'tedtalk'; .size( 100px ); .font( 16px; ); position: absolute; left: 25px; top: -6px; .c( @white ) }
-//#category{ .mt( 45px ); .mb( 30px ) }
 button{ width: 100px ; margin-top: 30px ; padding:  10px 15px 10px 15px ; background-color:#D10D27; color: #ffffff;  border-radius:  5px ; display: block; }
+
+
+  /*font-family: 'Monoton', cursive;
+  font-family: 'Six Caps', sans-serif;
+  font-family: 'Duru Sans', sans-serif;
+  font-family: 'Rationale', sans-serif;
+  font-family: 'Text Me One', sans-serif;
+  font-family: 'Dorsa', sans-serif;
+  font-family: 'Sarpanch', sans-serif;
+  font-family: 'Bungee Outline', cursive;
+  font-family: 'Dr Sugiyama', cursive;
+  font-family: 'Bungee Hairline', cursive;
+  font-family: 'Kumar One Outline', cursive;
+  font-family: 'Keania One', cursive;
+  font-family: 'Fascinate Inline', cursive;
+  font-family: 'Geostar Fill', cursive;
+  font-family: 'Nova Cut', cursive;
+  */
+
+ /* Nova cut
+  font-family: 'Keania One'; 
+  Duru Sans
+  "Text Me One"*/
+
+  
+  .block{
+    width:200px;
+    position:relative;
+    clear:both;
+    margin:0 0 25px;
+   
+  }
+
+  .block input{
+    display:none;  
+  }
+  span.check-box{
+    text-transform:uppercase;
+    font-family:'Duru Sans', sans-serif;
+    font-weight:bold;
+    letter-spacing:1px;
+    font-size:12px;
+    float:right;
+    width: 100px;
+    margin:15px 0 0;
+  }
+  
+  label.checkbox{
+    margin-top:     5px;
+    margin-bottom:  5px;
+    width:80px;
+    height:40px;
+    box-sizing:border-box;
+    border:1px solid;
+    border-radius:80px;
+    position:relative;
+    cursor:pointer;
+    transition:.3s ease;
+  }
+  label.checkbox.checked{
+    background: #D10D27;
+  }
+ 
+  label.checkbox:before{
+    transition:.3s ease;
+    content:'';
+    width:30px;
+    height:30px;
+    position:absolute;
+    background:white;
+    left:2px;
+    top:3px;
+    box-sizing:border-box;
+    border:1px solid;
+    color:black; 
+    border-radius:100px;
+  }
+  label.checkbox.checked:before{
+    left: 43px;
+  }

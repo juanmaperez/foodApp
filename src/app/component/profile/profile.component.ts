@@ -1,8 +1,8 @@
-import { jwtDecode } from 'jwt-decode';
-import { Router } from '@angular/router';
-import { SessionService } from './../../services/session.service';
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from './../../services/api.service';
+import { jwtDecode }                        from 'jwt-decode';
+import { Router }                           from '@angular/router';
+import { SessionService }                   from './../../services/session.service';
+import { Component, OnInit }                from '@angular/core';
+import { ApiService }                       from './../../services/api.service';
 
 
 @Component({

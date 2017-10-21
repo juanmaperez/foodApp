@@ -1,0 +1,164 @@
+
+div, p, h5, h4, h3{ font-family: "Duru Sans"; };
+
+#profilewrapper{ margin-top: 50px; }
+
+.profileimage img{
+    border-radius: 50%;
+    border-color: #fff;
+    border-style: solid;
+    overflow: hidden;
+}
+.profiledata p       { font-size: 15px; font-style: italic }
+.username            { font-style: normal; font-size: 32px; margin-top: 40px; }
+.review-overall-title{ font-size: 18px; font-weight: bold; }
+.aboutme             { font-style: normal; font-weight: bold; font-size: 16px; line-height: 32px }
+.age                 { font-style: normal; font-weight: bold; font-size: 16px; line-height: 32px}
+.city                { font-style: normal; font-weight: bold; font-size: 16px; line-height: 32px}
+
+
+.review-title        { font-size: 18px; font-weight: bold; line-height: 36px; }
+.review-text         { font-size: 13px; margin-bottom: 40px } 
+
+.star-ratings.overall{
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    font-size: 25px;
+    height: 25px;
+    width: 125px;
+    margin: 0 auto;
+    position: relative;
+    left: -211px;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
+    margin-bottom: 40px;  
+}
+.star-ratings.overall .star-ratings-top {
+    
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .star-ratings.overall .star-ratings-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+
+  .star-ratings.individual{
+    position: relative;
+    left: -222px;
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    font-size: 20px;
+    height: 20px;
+    width: 100px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
+    
+}
+.star-ratings.individual .star-ratings-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .star-ratings.individual .star-ratings-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+
+.EVENTSWRAPPER{
+    text-align: center;
+}
+
+.EVENTSWRAPPER h4{
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.eventwrapper{
+    border-color: #EEE;
+    border-width: 1px;
+    border-style: solid;
+    box-shadow: 0 3px 0 #EEE;
+    padding-left: 0;
+    padding-right: 0;
+    box-sizing: border-box;
+    margin-bottom: 40px;
+}
+
+.eventwrapper .eventimage{
+    width: 100%
+}
+
+.eventwrapper .user-img-sm{
+
+    border-radius: 50%;
+    border-color: #fff;
+    border-style: solid;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.eventwrapper .shortinfo{ 
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.eventwrapper .eventtitle{
+
+    font-size: 24px;
+    padding: 15px 20px 25px 20px;
+
+}
+.eventwrapper .event-description{
+    padding: 20px 20px 10px 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+
+}
+.eventwrapper .review{ font-size: 20px; }
+
+
+.eventwrapper .event-price{ font-size: 22px; text-align:right; padding: 20px; }
+hr{ background-color: #EEE; }
+
+
+.pics {
+    /* Prevent vertical gaps */
+    line-height: 0;
+     
+    -webkit-column-count: 5;
+    -webkit-column-gap:   0px;
+    -moz-column-count:    5;
+    -moz-column-gap:      0px;
+    column-count:         5;
+    column-gap:           0px;  
+  }
+  
+pics img {
+    /* Just in case there are inline attributes */
+    width: 100% !important;
+    height: auto !important;
+  }

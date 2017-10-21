@@ -1,4 +1,4 @@
-import { Component, OnInit }                  from '@angular/core';
+import { Component, OnInit, Input }                  from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from './../../services/session.service';
 import { FileUploader, FileSelectDirective }  from "ng2-file-upload";
@@ -12,59 +12,62 @@ import { FileUploader, FileSelectDirective }  from "ng2-file-upload";
 
 export class ImageuploadComponent implements OnInit {
  
-  id : string = '';
-
-  imagepreview : any;
-
-  private BASE_URL: String = 'http://localhost:3000/api';
+  @Input() url : string;
   
-  uploader: FileUploader;
-
-  file = { 
-    name : ""
-  }
-
-  feedback: string;
-
-  constructor( private router : Router, private session : SessionService ) { }
-
-  ngOnInit() {
-    this.id=this.session.user._id;
-    console.log("this.id", this.id);
-    this.uploader = new FileUploader({
-      
-       url: `${this.BASE_URL}/imageupload/${this.id}`
-   
-     });
-
-    this.uploader.onSuccessItem = (item, base64) => {
+    id : string = '';
+  
+    
+  
+    imagepreview : any;
+    
+    uploader: FileUploader;
+  
+    file = { 
+      name : ""
+    }
+  
+    feedback: string;
+  
+    constructor( private router : Router, private session : SessionService ) { }
+  
+    ngOnInit() {
+      this.id=this.session.user._id;
+      console.log("this.id", this.id);
+      console.log( "url", this.url)
+      this.uploader = new FileUploader({
+        
+         url: this.url
      
-     this.imagepreview.src = base64;
-      //this.feedback = JSON.parse(response).message;
-    
-    };
-
-    this.uploader.onErrorItem = (item, response, status, headers) => {
-      this.feedback = JSON.parse(response).message;
-    
-    };
-  }
-
-  submit() {
-      console.log("inside image upload");
+       });
+  
+      this.uploader.onSuccessItem = (item, base64) => {
+       
+       this.imagepreview.src = base64;
+        //this.feedback = JSON.parse(response).message;
       
-      this.uploader.onBuildItemForm = (item, form) => {
-    
-      //No authentication headers
-      item.withCredentials = false;
-      form.append('name', this.file.name);
-
-    };
-
-    this.uploader.uploadAll();
+      };
+  
+      this.uploader.onErrorItem = (item, response, status, headers) => {
+        this.feedback = JSON.parse(response).message;
+      
+      };
+    }
+  
+    submit() {
+        console.log("inside image upload");
+        
+        this.uploader.onBuildItemForm = (item, form) => {
+      
+        //No authentication headers
+        item.withCredentials = false;
+        form.append('name', this.file.name);
+  
+      };
+  
+      this.uploader.uploadAll();
+    }
+    ngAfterViewChecked(){
+     this.imagepreview = document.getElementById('imagepreview');
+  
+    }
   }
-  ngAfterViewChecked(){
-   this.imagepreview = document.getElementById('imagepreview');
-
-  }
-}
