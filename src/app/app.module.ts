@@ -10,6 +10,7 @@ import { NoopAnimationsModule }     from '@angular/platform-browser/animations';
 import { AgmCoreModule }            from '@agm/core';
 import { environment }              from '../environments/environment'
 
+
 //********************************* SERVICES**************************************/
 import { ApiService }               from './services/api.service';
 import { SessionService }           from './services/session.service';
@@ -39,6 +40,7 @@ import { EditProfileComponent }     from './component/edit-profile/edit-profile.
 import { ImageuploadComponent }     from './component/imageupload/imageupload.component'; 
 import { ProfileComponent }         from './component/profile/profile.component';
 import { GoogleMapComponent }       from './component/google-map/google-map.component';
+import { CreateReviewComponent }    from './component/create-review/create-review.component';
 
 // canActivate
 export const routes: Routes = [
@@ -58,7 +60,6 @@ export const routes: Routes = [
   { path: '**', redirectTo: '' }
   
 ];
-
 
 @NgModule({
   declarations: [
@@ -87,9 +88,12 @@ export const routes: Routes = [
     ImageuploadComponent,
     GoogleMapComponent,
     FileSelectDirective,
+
+    CreateReviewComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot(routes),
