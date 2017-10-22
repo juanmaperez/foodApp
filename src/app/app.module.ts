@@ -36,6 +36,9 @@ import { EventComponent } from './component/event/event.component';
 import { EventDetailComponent } from './component/event-detail/event-detail.component';
 import { AddEventFormComponent } from './component/add-event-form/add-event-form.component';
 import { EventsManagerComponent } from './component/events-manager/events-manager.component';
+import { CreateEventComponent } from './component/create-event/create-event.component';
+
+
 
 
 // canActivate
@@ -47,7 +50,7 @@ export const routes: Routes = [
   { path: 'events',   component: EventsManagerComponent,
                       children: [ 
                         { path: '', component: EventsComponent },
-                        { path: 'add', component: AddEventFormComponent, canActivate: [SessionService] },
+                        { path: 'create', component: CreateEventComponent, canActivate: [SessionService] },
                         { path: ':id', component: EventDetailComponent, canActivate: [SessionService] }] 
   },
   { path: 'hosts',    component: HostsComponent,
@@ -76,7 +79,7 @@ export const routes: Routes = [
     HostVsguestComponent,
     JoinComponent,
     ProfileComponent,
-    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, AddEventFormComponent, EventsManagerComponent
+    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, AddEventFormComponent, EventsManagerComponent, CreateEventComponent
   ],
   imports: [
     AgmCoreModule.forRoot({ 

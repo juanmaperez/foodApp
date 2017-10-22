@@ -10,26 +10,26 @@ import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { }                              from 'googlemaps';
 import {} from '@types/googlemaps'; 
 
-
 declare var google: any;
 
 
+
 @Component({
-  selector: 'add-event-form',
-  templateUrl: './add-event-form.component.html',
-  styleUrls: ['./add-event-form.component.scss']
+  selector: 'create-event',
+  templateUrl: './create-event.component.html',
+  styleUrls: ['./create-event.component.scss']
 })
-export class AddEventFormComponent implements OnInit {
-  
+export class CreateEventComponent implements OnInit {
+
   baseAPI = environment.baseURL;
-  uploader: FileUploader;
+  uploader: FileUploader; 
+
+
+  userID: any;
   
-
-  userID: any = "";
-
   event = {
     title: "",
-/*     description : "",
+    description : "",
     recipe : "",
     ingredients: "",
     date: "",
@@ -39,10 +39,11 @@ export class AddEventFormComponent implements OnInit {
     _foodCategory:"ajkdfksdjkafjdlñf",
     _host: "",
     address: "",
-    location : [] */
+    location_lat: 0,
+    location_lng : 0
   }
-  message: String = "";
-  location: Array<number> = []
+
+  message: any;
 
   constructor(
     private api             : ApiService,
@@ -51,64 +52,37 @@ export class AddEventFormComponent implements OnInit {
     private googleApi       : GoogleApiService,
     private _mapsAPILoader  : MapsAPILoader,
     private ngZone          : NgZone
-    ) {}
+  ) { }
 
   ngOnInit() {
-  
+
     this.uploader = new FileUploader({
       url: `${this.baseAPI}/api/events/new`,
       authToken: "JWT " + this.session.token,
     });
 
-
     this.uploader.onAfterAddingFile = (file) => { console.log('file2', file) };
-		this.uploader.onSuccessItem = (item, response) => {
+
+    this.uploader.onSuccessItem = (item, response) => {
       console.log('event', response);
       console.log('item', item)
+      
+			this.message = JSON.parse(response).message;
 			
-			// this.event = JSON.parse(response).event
-			
-			// this.message = JSON.parse(response).message;
     }
-
 
     this.uploader.onErrorItem = (item, response, status, headers) => {
       console.log("response", response);
       // JSON.parse(response).message;
-    };
-
+    }
 
     this.userID = this.session.user._id;
-
+    
+    
   }
 
- 
-  
 
-  submitForm(myForm){
-    // console.log(this.event.title)
-    this.uploader.onBuildItemForm = (item, otherForm) => {
-      console.log("event", this.event)
-      item.withCredentials = false;
-      otherForm.append('title', "this.event.title");
-      // form.append('description', this.event.description);
-      // form.append('recipe', this.event.recipe);
-      // form.append('ingredients', this.event.ingredients);
-      // form.append('date', this.event.date);
-      // form.append('time', this.event.time);
-      // form.append('cookingTime', this.event.cookingTime);
-      // form.append('contribution', this.event.contribution);
-      // form.append('_foodCategory', this.event._foodCategory);
-      // form.append('_host', this.userID);
-      // form.append('address', this.event.address);
-      // form.append('location', this.event.location);
-      console.log('form', otherForm)
-    };
-  
-    this.uploader.uploadAll();
-  }
 
-/* 
   ngAfterViewInit(){
     
     this._mapsAPILoader.load().then(() => {
@@ -132,7 +106,8 @@ export class AddEventFormComponent implements OnInit {
                 console.log("lng" , Lng);
                 console.log("lng" , Lat);
                 this.event.address = place.name;
-                this.event.location  = [Lat, Lng];
+                this.event.location_lat = Lat;
+                this.event.location_lng = Lng;
                   
               }//RUN GEOCODER TO GET GEOMETRY DATA IF PLACE ID UNDEFINED
               else if(!place.place_id){
@@ -157,6 +132,31 @@ export class AddEventFormComponent implements OnInit {
             });
         });
     });
-  } */
+  } 
+
+
+  submitForm(){
+    // console.log(this.event.title)
+    this.uploader.onBuildItemForm = (item, form) => {
+      item.withCredentials = false;
+        form.append('title', this.event.title);
+        form.append('description', this.event.description);
+        form.append('recipe', this.event.recipe);
+        form.append('ingredients', this.event.ingredients);
+        form.append('date', this.event.date);
+        form.append('time', this.event.time);
+        form.append('cookingTime', this.event.cookingTime);
+        form.append('contribution', this.event.contribution);
+        form.append('_foodCategory', this.userID);
+        form.append('_host', this.userID);
+        form.append('address', this.event.address);
+        form.append('location_lat', this.event.location_lat);
+        form.append('location_lng', this.event.location_lng);
+        
+    };
+    
+  
+    this.uploader.uploadAll();
+  }
 
 }

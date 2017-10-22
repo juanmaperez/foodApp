@@ -1,0 +1,23 @@
+<h2>
+  Create new event
+</h2>
+<hr> 
+
+<div class="form-wrapper col-md-4 col-sm-6 col-xs-8">
+  <form (ngSubmit)="submitForm()" #myForm="ngForm">
+    <input type="file" name="file" ng2FileSelect value="" [uploader]="uploader" />    
+      
+    <input type="text" value="" name="title" placeholder="Dish title" [(ngModel)]="event.title">     <textarea type="textarea" name="description" placeholder="Something about the dish or the dinner" [(ngModel)]="event.description"></textarea>
+    <textarea type="textarea" name="recipe" placeholder="A few words about the recipe" [(ngModel)]="event.recipe"></textarea>  
+    <input value="" type="number" name="cookingTime" placeholder="Time cooking in minutes" [(ngModel)]="event.cookingTime">     
+    <input value="" type="time" name="time" [(ngModel)]="event.time" placeholder="Time">
+    <input value="" type="date" name="date" [(ngModel)]="event.date" placeholder="Date">
+    <input value="" type="number" name="contribution" placeholder="Contribution to cover costs" [(ngModel)]="event.contribution">
+    <input id="location" value="" type="text" name="address" placeholder="Location" (ngChange)="addLatLong()" [(ngModel)]="event.address"> 
+    <button type="submit">SAVE</button>
+  </form>
+  <small class="alert alert-success ">{{message}}</small>
+  
+</div>
+
+    
