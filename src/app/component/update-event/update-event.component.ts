@@ -10,51 +10,59 @@ import { AgmCoreModule, MapsAPILoader } from '@agm/core';
 import { }                              from 'googlemaps';
 import {} from '@types/googlemaps'; 
 
-
 declare var google: any;
 
 
 @Component({
-  selector: 'add-event-form',
-  templateUrl: './add-event-form.component.html',
-  styleUrls: ['./add-event-form.component.scss']
+  selector: 'update-event',
+  templateUrl: './update-event.component.html',
+  styleUrls: ['./update-event.component.scss']
 })
-export class AddEventFormComponent implements OnInit {
-  
-  baseAPI = environment.baseURL;
-  uploader: FileUploader;
-  
+export class UpdateEventComponent implements OnInit {
 
-  userID: any = "";
+  userID: any;
+  host : any = {};
+  allGuests : Array<Object> = [];
+
+  baseAPI: string = 'http://localhost:3000';
+  uploader: FileUploader; 
 
   event = {
+    _id: "",
     title: "",
-/*     description : "",
-    recipe : "",
-    ingredients: "",
-    date: "",
-    time: "",
+    description: "",
+    recipe: "",
     cookingTime: 0,
+    image: "",
+    date: "",
+    time : "",
     contribution: 0,
-    _foodCategory:"ajkdfksdjkafjdlñf",
-    _host: "",
     address: "",
-    location : [] */
+    location_lat: 0,
+    location_lng: 0,
+    _host: {},
+    _guests: []
   }
-  message: String = "";
-  location: Array<number> = []
+
+  message: string; 
 
   constructor(
     private api             : ApiService,
     private router          : Router,
+    private route           : ActivatedRoute,
     private session         : SessionService,
     private googleApi       : GoogleApiService,
     private _mapsAPILoader  : MapsAPILoader,
     private ngZone          : NgZone
-    ) {}
+  ) { }
 
   ngOnInit() {
-  
+    this.route.params.subscribe((params) => {
+      this.getEventDetails(params.id);
+    })
+    
+    this.userID = this.session.user._id;
+
     this.uploader = new FileUploader({
       url: `${this.baseAPI}/api/events/new`,
       authToken: "JWT " + this.session.token,
@@ -62,53 +70,22 @@ export class AddEventFormComponent implements OnInit {
 
 
     this.uploader.onAfterAddingFile = (file) => { console.log('file2', file) };
-		this.uploader.onSuccessItem = (item, response) => {
+    
+    this.uploader.onSuccessItem = (item, response) => {
       console.log('event', response);
       console.log('item', item)
-			
-			// this.event = JSON.parse(response).event
-			
-			// this.message = JSON.parse(response).message;
+      
+      this.message = JSON.parse(response).message;
+      
     }
-
 
     this.uploader.onErrorItem = (item, response, status, headers) => {
       console.log("response", response);
       // JSON.parse(response).message;
-    };
-
-
-    this.userID = this.session.user._id;
+    }
 
   }
 
- 
-  
-
-  submitForm(myForm){
-    // console.log(this.event.title)
-    this.uploader.onBuildItemForm = (item, otherForm) => {
-      console.log("event", this.event)
-      item.withCredentials = false;
-      otherForm.append('title', "this.event.title");
-      // form.append('description', this.event.description);
-      // form.append('recipe', this.event.recipe);
-      // form.append('ingredients', this.event.ingredients);
-      // form.append('date', this.event.date);
-      // form.append('time', this.event.time);
-      // form.append('cookingTime', this.event.cookingTime);
-      // form.append('contribution', this.event.contribution);
-      // form.append('_foodCategory', this.event._foodCategory);
-      // form.append('_host', this.userID);
-      // form.append('address', this.event.address);
-      // form.append('location', this.event.location);
-      console.log('form', otherForm)
-    };
-  
-    this.uploader.uploadAll();
-  }
-
-/* 
   ngAfterViewInit(){
     
     this._mapsAPILoader.load().then(() => {
@@ -132,7 +109,8 @@ export class AddEventFormComponent implements OnInit {
                 console.log("lng" , Lng);
                 console.log("lng" , Lat);
                 this.event.address = place.name;
-                this.event.location  = [Lat, Lng];
+                this.event.location_lat = Lat;
+                this.event.location_lng = Lng;
                   
               }//RUN GEOCODER TO GET GEOMETRY DATA IF PLACE ID UNDEFINED
               else if(!place.place_id){
@@ -157,6 +135,18 @@ export class AddEventFormComponent implements OnInit {
             });
         });
     });
-  } */
+  } 
+
+
+
+  getEventDetails(id) {
+    this.api.getEvent(id)
+      .subscribe((event) => {
+        this.event = event;
+        this.host = event._host;
+        this.allGuests = event._guests;
+      })
+  }
+
 
 }

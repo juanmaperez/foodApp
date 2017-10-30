@@ -34,9 +34,9 @@ import { HostsComponent } from './component/hosts/hosts.component';
 import { EventsComponent } from './component/events/events.component';
 import { EventComponent } from './component/event/event.component'; 
 import { EventDetailComponent } from './component/event-detail/event-detail.component';
-import { AddEventFormComponent } from './component/add-event-form/add-event-form.component';
 import { EventsManagerComponent } from './component/events-manager/events-manager.component';
 import { CreateEventComponent } from './component/create-event/create-event.component';
+import { UpdateEventComponent } from './component/update-event/update-event.component';
 
 
 
@@ -51,7 +51,8 @@ export const routes: Routes = [
                       children: [ 
                         { path: '', component: EventsComponent },
                         { path: 'create', component: CreateEventComponent, canActivate: [SessionService] },
-                        { path: ':id', component: EventDetailComponent, canActivate: [SessionService] }] 
+                        { path: ':id', component: EventDetailComponent, canActivate: [SessionService] },
+                        { path: 'update/:id', component: UpdateEventComponent, canActivate: [SessionService]}] 
   },
   { path: 'hosts',    component: HostsComponent,
                       children: [ { path: ':id', component: HostComponent }] 
@@ -79,7 +80,7 @@ export const routes: Routes = [
     HostVsguestComponent,
     JoinComponent,
     ProfileComponent,
-    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, AddEventFormComponent, EventsManagerComponent, CreateEventComponent
+    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, EventsManagerComponent, CreateEventComponent, UpdateEventComponent
   ],
   imports: [
     AgmCoreModule.forRoot({ 

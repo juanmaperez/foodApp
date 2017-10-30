@@ -1,3 +1,62 @@
-<p>
-  event-detail works!
-</p>
+<div class="eventDetail">
+  <div class="event-header" [ngStyle]="{'background-image': 'url(' + event.image + ')'}">>
+      <h1> {{event.title}}</h1> 
+  </div>
+
+  <div class="event-body container container-fluid">
+
+    <div class="event-details-wrapper col-md-8 col-sm-8 col-xs-1">
+      <div class="event-detail">
+          <p *ngIf="host._id == userID">
+            <a class="edit-event" [routerLink]="['/events/update', event._id ]"><i class="fa fa-pencil"></i></a>
+            <br>
+          </p>
+          <p>
+            {{event.description}}
+          </p>
+        <hr>
+        <h4>Recipe:</h4>
+          <p>{{event.recipe}}</p>
+        <h4>Address:</h4>
+          <agm-map [zoom]="15" class="location-map" [latitude]="event.location_lat" [longitude]="event.location_lng">
+              <agm-marker [latitude]="event.location_lat" [longitude]="event.location_lng"></agm-marker>
+          </agm-map>
+      </div>
+    </div>
+  
+    <div class="box-right join-wrapper col-md-4 col-sm-4 col-xs-1">
+      <div class="join">
+        <img class="host-image" src="{{host.image}}"><h5>{{host.username}}</h5>
+        <p class="description">{{host.description}}</p>
+        <hr>
+        <p class="date">{{event.date | date:"dd/MM/yyyy"}}</p>
+        <time>{{event.time}}</time>
+        
+        <p><i class="fa fa-map-marker"></i> {{event.address}}</p>
+        <p><i class="fa fa-money"></i> {{event.contribution}} €</p>
+
+        <hr>
+        
+
+        <button (click)="subscribeUser()" *ngIf="event._id != userID" class="join">Join</button>
+
+      </div>
+    </div>
+
+    <div class="box-right col-md-4 col-sm-4 col-xs-1">
+      <div class="people-joined">
+        <h4>People Joined</h4>
+        <hr>
+        <div *ngFor="let guest of allGuests">
+          <img class="host-image" src="{{guest.image}}"><h5>{{host.username}}</h5>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+ 
+
+</div>
+

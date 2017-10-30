@@ -1,6 +1,7 @@
 import { ApiService } from './../../services/api.service';
 import { environment } from './../../../environments/environment';
 import { Component, OnInit, Input } from '@angular/core';
+import { SlicePipe } from '@angular/common';
 
 @Component({
   selector: 'event',

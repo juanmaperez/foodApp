@@ -63,7 +63,19 @@ export class ApiService {
     return this.http.get(`${this.BASE_URL}/api/events/${id}`)
       .map((res) => res.json());
   }
-  
+
+  removeEvent(id){
+    return this.http.delete(`${this.BASE_URL}/api/events/${id}`)
+      .map((res)=> res.json())
+  }
+
+  subscribeUser(userID, eventID ){
+    console.log(eventID);
+    console.log(userID);
+    return this.http.put(`${this.BASE_URL}/api/events/subscribe/${eventID}`, {userID} )
+      .map((res)=>res.json())
+  }
+
 }
 
 

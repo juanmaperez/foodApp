@@ -1,0 +1,71 @@
+
+  .block{
+    width:200px;
+    position:relative;
+    clear:both;
+    margin:0 0 25px;
+   
+  }
+
+  .block input{
+    display:none;  
+  }
+  span{
+    text-transform:uppercase;
+    font-family:'Duru Sans', sans-serif;
+    font-weight:bold;
+    letter-spacing:1px;
+    font-size:12px;
+    float:right;
+    width:100px;
+    margin:15px 0 0;
+  }
+  
+  label{
+    margin-top:     5px;
+    margin-bottom:  5px;
+    width:80px;
+    height:40px;
+    box-sizing:border-box;
+    border:1px solid;
+    border-radius:80px;
+    position:relative;
+    cursor:pointer;
+    transition:.3s ease;
+  }
+  label.checked{
+    background: #D10D27;
+  }
+ 
+  label:before{
+    transition:.3s ease;
+    content:'';
+    width:30px;
+    height:30px;
+    position:absolute;
+    background:white;
+    left:2px;
+    top:3px;
+    box-sizing:border-box;
+    border:1px solid;
+    color:black; 
+    border-radius:100px;
+  }
+  label.checked:before{
+    left: 43px;
+  }
+
+.alert{
+  margin-top: 20px !important;
+  display: block;
+  text-align: center;
+}
+
+.event-image{
+    margin: 20px auto;
+    width: 400px;
+    float: none;
+    height: auto;
+    text-align: center;
+    display: block;
+}

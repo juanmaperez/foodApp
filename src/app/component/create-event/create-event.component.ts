@@ -157,6 +157,7 @@ export class CreateEventComponent implements OnInit {
     
   
     this.uploader.uploadAll();
+
   }
 
 }

@@ -1,14 +1,13 @@
 
 .event{
     border:1px solid #999;
-    align-content: flex-start;
     border-bottom:0px;
-    position:relative;
     font-family: "Dorsa"; font-family: "Duru Sans";
+    position:relative;
    
     
     .resume{
-    
+        position:relative;
         padding:10px !important;
 
         h2 {
@@ -31,6 +30,22 @@
         .date{
             padding:0 5px;
             word-spacing: 2px;
+        }
+
+        .edit-event{
+            position:absolute;
+            top:8px;
+            right:8px;
+            color:#f00;
+            border:1px solid #f00;
+            width:22px;
+            height:22px;
+            border-radius:22px;
+            text-align:center;
+            vertical-align: middle;
+            i{
+                color:#f00;
+            }
         }
         
         

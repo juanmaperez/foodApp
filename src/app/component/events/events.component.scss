@@ -1,6 +1,33 @@
+
+:host {
+    max-width: 1170px;
+    margin:0px auto;
+}
+
+.events-list-title{
+    padding:15px 0px;
+}
+
+hr{
+    display:block;
+    margin-bottom:20px
+}
+.events{
+    padding:10px 0px;
+    float:left;
+
+}
+
+
 .event-wrapper{
     box-sizing:border-box;
-    padding: 10px;    
-    float:left !important;
-    margin: 0px !important;
+    margin: 0px 0px 20px !important;
+    width:100%;
+    display: block;
+}
+
+.card{
+    border:0px;
+    display: inline-block;
+    column-break-inside: avoid
 }

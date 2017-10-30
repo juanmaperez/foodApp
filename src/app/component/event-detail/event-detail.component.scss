@@ -1,0 +1,157 @@
+
+:host{
+    width:100%;
+    
+}
+.events{
+    padding:0px !important;
+    width:100%;
+}
+
+.eventDetail{
+    min-width: 100%;
+}
+
+.event-wrapper{
+    display:block;
+    width:100% !important;
+}
+
+
+.event-header {
+    width:100%;
+    background-size: 100%;
+    min-height:300px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position:relative;
+
+    h1{
+        font-size:28px;
+        position:absolute;
+        left:0;
+        bottom:0;
+        padding:10px 30px;
+        background:rgba(255,255,255,0.6)
+    }
+}
+
+.main-information{
+    width:100%;
+    border-bottom:1px solid #999;
+    padding:5px 30px;
+    box-sizing:border-box;
+}
+
+.event-body{
+    padding:30px 0px;
+
+    .event-details-wrapper {
+        min-height:30px;
+        float:left;
+        
+        .event-detail{
+
+            .edit-event{
+                color:#f00;
+                border:1px solid #f00;
+                width:22px;
+                height:22px;
+                border-radius:22px;
+                text-align:center;
+                vertical-align: middle;
+                margin-bottom:20px;
+                i{
+                    color:#f00;
+                }
+            }
+
+            hr {
+                margin:30px 0px 0px;
+            }
+
+            h4{
+                font-size:24px;
+                margin:40px 0px 20px
+            }
+
+            .location-map{
+                width:100%;
+                display: block;
+                height:300px;
+            }
+        }
+    }
+
+    .join-wrapper, .box-right {
+        min-height:30px;
+        float:left;
+        margin-bottom:10px;
+
+        .join, .people-joined{
+            border:1px solid #999;
+            padding: 20px;
+
+            .host-image{
+                width:36px;
+                height:36px;
+                border-radius:36px;
+                display:inline-block;
+                margin-right: 10px;
+            }
+
+            .description{
+                margin:10px 0px;
+            }
+
+            h5{
+                display: inline-block;
+                width:auto;
+                font-size:24px;
+                text-transform: capitalize;
+                line-height:40px;
+            }
+            
+            hr{
+                margin:10px 0px;
+            }
+
+            .date{
+                margin-top:5px;
+                font-size:16px;
+                width:45%;
+                text-align: left;
+                display: inline-block
+            }
+
+            time{
+                margin-top:5px;
+                width:50%;
+                font-size:16px;
+                color:#999;
+                text-align:right;
+                display: inline-block;
+            }
+
+            button.join{
+                color:#fff;
+                background-color: #f00;
+                padding:15px 0px;
+                width:100%;
+                border-radius:3px;
+                border:0px;
+                margin:10px 0px;
+            }
+            button.join:hover{
+
+            }
+        }
+
+        .people-joined{
+            h5{
+                font-size: 18px;
+                
+            }
+        }
+    }
+}    

@@ -1,10 +1,13 @@
 
-    <h2>
+    <h2 class="events-list-title">
       Next Events
     </h2>
     
     <hr>
-    
-    <div class="event-wrapper col-md-4 col-sm-6 col-xs-1" *ngFor="let event of events">
-      <event [event]="event"></event>
-    </div>
+    <div class="events">
+      <div class="card-columns" >
+        <div class="card event-wrapper" *ngFor="let event of events">
+          <event [event]="event"></event>
+        </div>
+      </div>
+  </div>

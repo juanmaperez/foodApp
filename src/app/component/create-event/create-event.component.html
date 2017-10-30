@@ -16,7 +16,7 @@
     <input id="location" value="" type="text" name="address" placeholder="Location" (ngChange)="addLatLong()" [(ngModel)]="event.address"> 
     <button type="submit">SAVE</button>
   </form>
-  <small class="alert alert-success ">{{message}}</small>
+  <small *ngIf="message !== undefined" class="alert alert-success ">{{message}}</small>
   
 </div>
 
