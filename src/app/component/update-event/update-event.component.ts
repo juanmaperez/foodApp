@@ -36,7 +36,9 @@ export class UpdateEventComponent implements OnInit {
     image: "",
     date: "",
     time : "",
+    places: 0,
     contribution: 0,
+    city: "",
     address: "",
     location_lat: 0,
     location_lng: 0,
@@ -44,8 +46,9 @@ export class UpdateEventComponent implements OnInit {
     _guests: []
   }
 
-  message: string; 
-
+  message_info: string; 
+  message_img: string; 
+  
   constructor(
     private api             : ApiService,
     private router          : Router,
@@ -64,23 +67,25 @@ export class UpdateEventComponent implements OnInit {
     this.userID = this.session.user._id;
 
     this.uploader = new FileUploader({
-      url: `${this.baseAPI}/api/events/new`,
+      url: `${this.baseAPI}/api/events/updateimage/`,
       authToken: "JWT " + this.session.token,
     });
 
 
-    this.uploader.onAfterAddingFile = (file) => { console.log('file2', file) };
+    this.uploader.onAfterAddingFile = (file) => { console.log('file2', file); console.log("url", this.uploader.options.url), console.log("eventID", this.event._id) };
     
     this.uploader.onSuccessItem = (item, response) => {
-      console.log('event', response);
-      console.log('item', item)
+      // console.log('event', response);
+      // console.log('item', item)
+      this.getEventDetails(JSON.parse(response).event._id)
       
-      this.message = JSON.parse(response).message;
+      
+      this.message_img = JSON.parse(response).message;
       
     }
 
     this.uploader.onErrorItem = (item, response, status, headers) => {
-      console.log("response", response);
+      // console.log("response", response);
       // JSON.parse(response).message;
     }
 
@@ -89,7 +94,7 @@ export class UpdateEventComponent implements OnInit {
   ngAfterViewInit(){
     
     this._mapsAPILoader.load().then(() => {
-        console.log(google);
+        // console.log(google);
         const input = document.getElementById('location');
         const autocomplete = new google.maps.places.Autocomplete(input);
         const geocoder = new google.maps.Geocoder;
@@ -103,11 +108,11 @@ export class UpdateEventComponent implements OnInit {
               if(place.place_id){
 
                 let placeID = place.place_id;
-                console.log("placeid", placeID);
+                // console.log("placeid", placeID);
                 let Lng = place.geometry.location.lng();
                 let Lat = place.geometry.location.lat();
-                console.log("lng" , Lng);
-                console.log("lng" , Lat);
+                // console.log("lng" , Lng);
+                // console.log("lng" , Lat);
                 this.event.address = place.name;
                 this.event.location_lat = Lat;
                 this.event.location_lng = Lng;
@@ -120,8 +125,8 @@ export class UpdateEventComponent implements OnInit {
                         if(results[0]){
                             let Lat = results[0].geometry.location.lat();
                             let Lng = results[0].geometry.location.lng();
-                            console.log("coordinates lat" , Lat);
-                            console.log("coordinates lng" , Lng);
+                            // console.log("coordinates lat" , Lat);
+                            // console.log("coordinates lng" , Lng);
             
                             // STORE INFO
                             this.user.address = place.name;
@@ -146,6 +151,27 @@ export class UpdateEventComponent implements OnInit {
         this.host = event._host;
         this.allGuests = event._guests;
       })
+  }
+
+  updateImage(){
+    // console.log(this.event.title)
+    this.uploader.onBuildItemForm = (item, form) => {
+      item.withCredentials = false;
+
+      form.append("id", this.event._id)
+      
+    };
+
+    this.uploader.uploadAll()
+
+  } 
+
+  submitForm(){
+    this.api.editEvent(this.event)
+    .subscribe((response) => {
+      this.message_info = response.message;
+      this.getEventDetails(this.event._id)
+    })
   }
 
 

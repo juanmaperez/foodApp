@@ -34,6 +34,8 @@ export class CreateEventComponent implements OnInit {
     ingredients: "",
     date: "",
     time: "",
+    places: 0,
+    city: "",
     cookingTime: 0,
     contribution: 0,
     _foodCategory:"ajkdfksdjkafjdlñf",
@@ -64,8 +66,8 @@ export class CreateEventComponent implements OnInit {
     this.uploader.onAfterAddingFile = (file) => { console.log('file2', file) };
 
     this.uploader.onSuccessItem = (item, response) => {
-      console.log('event', response);
-      console.log('item', item)
+      //console.log('event', response);
+      //console.log('item', item)
       
 			this.message = JSON.parse(response).message;
 			
@@ -86,7 +88,7 @@ export class CreateEventComponent implements OnInit {
   ngAfterViewInit(){
     
     this._mapsAPILoader.load().then(() => {
-        console.log(google);
+        //console.log(google);
         const input = document.getElementById('location');
         const autocomplete = new google.maps.places.Autocomplete(input);
         const geocoder = new google.maps.Geocoder;
@@ -100,11 +102,11 @@ export class CreateEventComponent implements OnInit {
               if(place.place_id){
 
                 let placeID = place.place_id;
-                console.log("placeid", placeID);
+                //console.log("placeid", placeID);
                 let Lng = place.geometry.location.lng();
                 let Lat = place.geometry.location.lat();
-                console.log("lng" , Lng);
-                console.log("lng" , Lat);
+                //console.log("lng" , Lng);
+                //console.log("lng" , Lat);
                 this.event.address = place.name;
                 this.event.location_lat = Lat;
                 this.event.location_lng = Lng;
@@ -117,8 +119,8 @@ export class CreateEventComponent implements OnInit {
                         if(results[0]){
                             let Lat = results[0].geometry.location.lat();
                             let Lng = results[0].geometry.location.lng();
-                            console.log("coordinates lat" , Lat);
-                            console.log("coordinates lng" , Lng);
+                            //console.log("coordinates lat" , Lat);
+                            //console.log("coordinates lng" , Lng);
             
                             // STORE INFO
                             this.user.address = place.name;
@@ -143,6 +145,8 @@ export class CreateEventComponent implements OnInit {
         form.append('description', this.event.description);
         form.append('recipe', this.event.recipe);
         form.append('ingredients', this.event.ingredients);
+        form.append('places', this.event.places)        
+        form.append('city', this.event.city)
         form.append('date', this.event.date);
         form.append('time', this.event.time);
         form.append('cookingTime', this.event.cookingTime);

@@ -1,28 +1,34 @@
-<h2>
+<h2 class="col-xs-12 col-sm-12 col-md-12">
     Update event
   </h2>
-  <hr> 
-  <div class="update-image">
+  <hr class="col-xs-12 col-sm-12 col-md-12"> 
+  <div class="wrapper">
+  <div class="update-image col-md-4 col-sm-6 col-xs-8">
       <img class="event-image" src="{{event.image}}">
       <form (ngSubmit)="updateImage()" #imageForm="ngForm">
-          <input type="file" name="file" ng2FileSelect value="" [uploader]="uploader" />    
+          <input type="file" name="file" ng2FileSelect [uploader]="uploader" />    
           <button type="submit">Update Image</button>
-        </form>
+      </form>
+      <small *ngIf="message_img !== undefined" class="alert alert-success ">{{message_img}}</small>
+      
   </div>
   
   <div class="form-wrapper col-md-4 col-sm-6 col-xs-8">
     <form (ngSubmit)="submitForm()" #myForm="ngForm">
         
-      <input type="text" value="" name="title" placeholder="Dish title" [(ngModel)]="event.title">     <textarea type="textarea" name="description" placeholder="Something about the dish or the dinner" [(ngModel)]="event.description"></textarea>
+      <input type="text" value="" name="title" placeholder="Dish title" [(ngModel)]="event.title">     
+      <textarea type="textarea" name="description" placeholder="Something about the dish or the dinner" [(ngModel)]="event.description"></textarea>
       <textarea type="textarea" name="recipe" placeholder="A few words about the recipe" [(ngModel)]="event.recipe"></textarea>  
-      <input value="" type="number" name="cookingTime" placeholder="Time cooking in minutes" [(ngModel)]="event.cookingTime">     
+      <input value="" type="number" name="cookingTime" placeholder="Time cooking in minutes" [(ngModel)]="event.cookingTime">
+      <input value="" type="number" name="places" [(ngModel)]="event.places" placeholder="Places">      
       <input value="" type="time" name="time" [(ngModel)]="event.time" placeholder="Time">
-      <input value="" type="date" name="date" [(ngModel)]="event.date" placeholder="Date">
+      <input value="{{event.date | date:'yyyy-MM-dd'}}" type="date" name="date" [(ngModel)]="event.date" placeholder="Date">
       <input value="" type="number" name="contribution" placeholder="Contribution to cover costs" [(ngModel)]="event.contribution">
+      <input value="" type="text" name="city" [(ngModel)]="event.city" placeholder="City">      
       <input id="location" value="" type="text" name="address" placeholder="Location" (ngChange)="addLatLong()" [(ngModel)]="event.address"> 
       <button type="submit">SAVE</button>
     </form>
-    <small *ngIf="message !== undefined" class="alert alert-success ">{{message}}</small>
+    <small *ngIf="message_info !== undefined" class="alert alert-success ">{{message_info}}</small>
     
   </div>
-  
+</div>

@@ -70,10 +70,15 @@ export class ApiService {
   }
 
   subscribeUser(userID, eventID ){
-    console.log(eventID);
-    console.log(userID);
+    //console.log(eventID);
+    //console.log(userID);
     return this.http.put(`${this.BASE_URL}/api/events/subscribe/${eventID}`, {userID} )
       .map((res)=>res.json())
+  }
+
+  editEvent(event){
+    return this.http.put(`${this.BASE_URL}/api/events/update/${event._id}`, {event})
+    .map((res)=> res.json())
   }
 
 }

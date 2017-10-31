@@ -35,6 +35,8 @@ export class EventDetailComponent implements OnInit {
     _guests: []
   }
 
+  isJoined: boolean = false;
+
   @HostBinding('class.event-wrapper') someField: boolean = true;
   
   constructor(
@@ -53,6 +55,8 @@ export class EventDetailComponent implements OnInit {
     })
     
     this.userID = this.session.user._id;
+
+    
   }
 
   getEventDetails(id) {
@@ -61,9 +65,21 @@ export class EventDetailComponent implements OnInit {
         this.event = event;
         this.host = event._host;
         this.allGuests = event._guests;
+
+        this.checkIsJoined(this.userID, this.allGuests)
+        
       })
   }
 
+  checkIsJoined(id,people){
+    // console.log(people)
+    people.forEach((person)=>{
+      // console.log(person)
+      if(person._id == id){
+        this.isJoined = true
+      }
+    })
+  }
 
   delete() {
     this.api.removeEvent(this.event._id)

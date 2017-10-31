@@ -12,7 +12,9 @@
     <input value="" type="number" name="cookingTime" placeholder="Time cooking in minutes" [(ngModel)]="event.cookingTime">     
     <input value="" type="time" name="time" [(ngModel)]="event.time" placeholder="Time">
     <input value="" type="date" name="date" [(ngModel)]="event.date" placeholder="Date">
+    <input value="" type="number" name="places" [(ngModel)]="event.places" placeholder="Places">
     <input value="" type="number" name="contribution" placeholder="Contribution to cover costs" [(ngModel)]="event.contribution">
+    <input value="" type="text" name="city" [(ngModel)]="event.city" placeholder="City">
     <input id="location" value="" type="text" name="address" placeholder="Location" (ngChange)="addLatLong()" [(ngModel)]="event.address"> 
     <button type="submit">SAVE</button>
   </form>

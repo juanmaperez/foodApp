@@ -1,5 +1,5 @@
 <div class="eventDetail">
-  <div class="event-header" [ngStyle]="{'background-image': 'url(' + event.image + ')'}">>
+  <div class="event-header" [ngStyle]="{'background-image': 'url(' + event.image + ')'}">
       <h1> {{event.title}}</h1> 
   </div>
 
@@ -30,7 +30,7 @@
         <p class="description">{{host.description}}</p>
         <hr>
         <p class="date">{{event.date | date:"dd/MM/yyyy"}}</p>
-        <time>{{event.time}}</time>
+        <time>{{event.date | date: "HH:mm"}}</time>
         
         <p><i class="fa fa-map-marker"></i> {{event.address}}</p>
         <p><i class="fa fa-money"></i> {{event.contribution}} €</p>
@@ -38,7 +38,7 @@
         <hr>
         
 
-        <button (click)="subscribeUser()" *ngIf="event._id != userID" class="join">Join</button>
+        <button (click)="subscribeUser()" *ngIf="!isJoined" class="join">Join</button>
 
       </div>
     </div>
