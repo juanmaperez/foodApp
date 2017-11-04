@@ -63,7 +63,7 @@ export class EventDetailComponent implements OnInit {
 
     
   }
-
+  
   getEventDetails(id) {
     this.api.getEvent(id)
       .subscribe((event) => {
@@ -73,9 +73,13 @@ export class EventDetailComponent implements OnInit {
         this.comments = event.comments;
         // console.log(this.comments)
         this.checkIsJoined(this.userID, this.allGuests)
+        // console.log(typeof this.userID);
+        // console.log(typeof this.host._id);
         
       })
   }
+
+
 
   checkIsJoined(id,people){
     if(people.length == 0){

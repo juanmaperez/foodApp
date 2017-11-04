@@ -45,10 +45,10 @@
         
         <p><i class="fa fa-map-marker"></i> {{event.address}}</p>
         <p><i class="fa fa-money"></i> {{event.contribution}} €</p>
-
-        <hr>
         
-        <div *ngIf="isJoined !== undefined">      
+        <div *ngIf="isJoined !== undefined && host._id !== userID">  
+          <hr>
+            
           <button (click)="subscribeUser()" *ngIf="!isJoined || event.places <= 0" class="join">Join</button>
           <button (click)="desubscribeUser()" *ngIf="isJoined" class="disjoin">Disjoin</button>
         </div>
@@ -60,6 +60,9 @@
       <div class="people-joined">
         <h4>People Joined</h4>
         <hr>
+        <div *ngIf="allGuests.length < 1">
+          No users joined
+        </div>
         <div *ngFor="let guest of allGuests">
           <img class="host-image" src="{{guest.image}}"><h5>{{guest.username}}</h5>
 
