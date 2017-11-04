@@ -1,3 +1,4 @@
+import { EventCommentFormComponent } from './../event-comment-form/event-comment-form.component';
 import { routes } from './../../app.module';
 import { MapsAPILoader } from '@agm/core';
 import { GoogleApiService } from './../../services/google-api.service';
@@ -6,7 +7,6 @@ import { SessionService } from './../../services/session.service';
 import { Component, OnInit, Input, NgZone, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SlicePipe } from '@angular/common';
-
 
 @Component({
   selector: 'event-detail',
@@ -17,6 +17,7 @@ export class EventDetailComponent implements OnInit {
   userID: any;
   host : any = {};
   allGuests : Array<Object> = [];
+  comments : Array<Object> = [];
 
   event = {
     _id: "",
@@ -29,13 +30,17 @@ export class EventDetailComponent implements OnInit {
     time : "",
     contribution: 0,
     address: "",
+    places: 0,
+    city:"",
     location_lat: 0,
     location_lng: 0,
     _host: {},
     _guests: []
   }
 
-  isJoined: boolean = false;
+  isJoined: boolean = undefined;
+
+  message_comment : string = "";
 
   @HostBinding('class.event-wrapper') someField: boolean = true;
   
@@ -65,20 +70,28 @@ export class EventDetailComponent implements OnInit {
         this.event = event;
         this.host = event._host;
         this.allGuests = event._guests;
-
+        this.comments = event.comments;
+        // console.log(this.comments)
         this.checkIsJoined(this.userID, this.allGuests)
         
       })
   }
 
   checkIsJoined(id,people){
-    // console.log(people)
-    people.forEach((person)=>{
-      // console.log(person)
-      if(person._id == id){
-        this.isJoined = true
-      }
-    })
+    if(people.length == 0){
+      this.isJoined = false;
+    } else {
+      people.forEach((person)=>{
+    
+        if(person._id == id){
+          this.isJoined = true
+        }
+      })
+    }
+  
+    
+    //console.log(this.isJoined)
+    //console.log(this.event.places)
   }
 
   delete() {
@@ -92,11 +105,34 @@ export class EventDetailComponent implements OnInit {
     this.api.subscribeUser( this.userID, this.event._id)
       
       .subscribe((response)=>{
-        
         this.event = response.event;
 
         this.getEventDetails(this.event._id);
 
+      })
+  }
+
+
+  desubscribeUser(){
+    this.api.desubscribeUser( this.userID, this.event._id)
+      
+      .subscribe((response)=>{
+        this.event = response.event;
+
+        this.getEventDetails(this.event._id);
+
+      })
+  }
+
+  addComment(comment){
+    this.api.addComment(comment, this.event._id)
+      .subscribe((response)=>{
+        // console.log(response)
+        this.event = response.event;
+        this.message_comment = response.message;
+
+        this.getEventDetails(response.event._id);
+        
       })
   }
 

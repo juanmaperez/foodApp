@@ -37,6 +37,8 @@ import { EventDetailComponent } from './component/event-detail/event-detail.comp
 import { EventsManagerComponent } from './component/events-manager/events-manager.component';
 import { CreateEventComponent } from './component/create-event/create-event.component';
 import { UpdateEventComponent } from './component/update-event/update-event.component';
+import { EventCommentFormComponent } from './component/event-comment-form/event-comment-form.component';
+import { EventCommentItemComponent } from './component/event-comment-item/event-comment-item.component';
 
 
 
@@ -80,7 +82,7 @@ export const routes: Routes = [
     HostVsguestComponent,
     JoinComponent,
     ProfileComponent,
-    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, EventsManagerComponent, CreateEventComponent, UpdateEventComponent
+    Guest123Component, Host123Component, SignupComponent, HostComponent, JoinCommunityComponent, HostsComponent, EventsComponent, EventComponent, EventDetailComponent, EventsManagerComponent, CreateEventComponent, UpdateEventComponent, EventCommentFormComponent, EventCommentItemComponent 
   ],
   imports: [
     AgmCoreModule.forRoot({ 

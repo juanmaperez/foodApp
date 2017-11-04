@@ -3,7 +3,7 @@
   </h2>
   <hr class="col-xs-12 col-sm-12 col-md-12"> 
   <div class="wrapper">
-  <div class="update-image col-md-4 col-sm-6 col-xs-8">
+  <div class="update-image col-md-6 col-sm-6 col-xs-8">
       <img class="event-image" src="{{event.image}}">
       <form (ngSubmit)="updateImage()" #imageForm="ngForm">
           <input type="file" name="file" ng2FileSelect [uploader]="uploader" />    
@@ -13,7 +13,7 @@
       
   </div>
   
-  <div class="form-wrapper col-md-4 col-sm-6 col-xs-8">
+  <div class="form-wrapper col-md-6 col-sm-6 col-xs-8">
     <form (ngSubmit)="submitForm()" #myForm="ngForm">
         
       <input type="text" value="" name="title" placeholder="Dish title" [(ngModel)]="event.title">     
@@ -21,14 +21,16 @@
       <textarea type="textarea" name="recipe" placeholder="A few words about the recipe" [(ngModel)]="event.recipe"></textarea>  
       <input value="" type="number" name="cookingTime" placeholder="Time cooking in minutes" [(ngModel)]="event.cookingTime">
       <input value="" type="number" name="places" [(ngModel)]="event.places" placeholder="Places">      
-      <input value="" type="time" name="time" [(ngModel)]="event.time" placeholder="Time">
-      <input value="{{event.date | date:'yyyy-MM-dd'}}" type="date" name="date" [(ngModel)]="event.date" placeholder="Date">
+      <input value="" type="time" [(ngModel)]="event.time" name="time">
+      <input  type="date" [(ngModel)]="event.date" value="{{event.date | date:'yyyy-MM-dd'}}" name="date">
       <input value="" type="number" name="contribution" placeholder="Contribution to cover costs" [(ngModel)]="event.contribution">
-      <input value="" type="text" name="city" [(ngModel)]="event.city" placeholder="City">      
       <input id="location" value="" type="text" name="address" placeholder="Location" (ngChange)="addLatLong()" [(ngModel)]="event.address"> 
+      <input value="" type="text" name="city" [(ngModel)]="event.city" placeholder="City" readonly>      
+      
+      <small *ngIf="message_info !== undefined" class="alert alert-success ">{{message_info}}</small>
+      
       <button type="submit">SAVE</button>
     </form>
-    <small *ngIf="message_info !== undefined" class="alert alert-success ">{{message_info}}</small>
     
   </div>
 </div>

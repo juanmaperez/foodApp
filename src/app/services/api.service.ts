@@ -76,9 +76,21 @@ export class ApiService {
       .map((res)=>res.json())
   }
 
+  desubscribeUser(userID,eventID){
+    return this.http.put(`${this.BASE_URL}/api/events/desubscribe/${eventID}`, {userID} )
+    .map((res)=>res.json())
+  }
+
   editEvent(event){
     return this.http.put(`${this.BASE_URL}/api/events/update/${event._id}`, {event})
     .map((res)=> res.json())
+  }
+
+  addComment(comment, eventID ){
+    //console.log(eventID);
+    //console.log(userID);
+    return this.http.put(`${this.BASE_URL}/api/events/comment/${eventID}`, {comment} )
+      .map((res)=>res.json())
   }
 
 }

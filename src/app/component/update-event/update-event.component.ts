@@ -116,6 +116,8 @@ export class UpdateEventComponent implements OnInit {
                 this.event.address = place.name;
                 this.event.location_lat = Lat;
                 this.event.location_lng = Lng;
+                this.event.city = place.address_components[2].long_name;
+                
                   
               }//RUN GEOCODER TO GET GEOMETRY DATA IF PLACE ID UNDEFINED
               else if(!place.place_id){
@@ -148,6 +150,8 @@ export class UpdateEventComponent implements OnInit {
     this.api.getEvent(id)
       .subscribe((event) => {
         this.event = event;
+        const date = event.date.split("T");
+        this.event.date = date[0];
         this.host = event._host;
         this.allGuests = event._guests;
       })

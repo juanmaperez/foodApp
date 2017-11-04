@@ -21,12 +21,23 @@
           <agm-map [zoom]="15" class="location-map" [latitude]="event.location_lat" [longitude]="event.location_lng">
               <agm-marker [latitude]="event.location_lat" [longitude]="event.location_lng"></agm-marker>
           </agm-map>
+
+          <h4>Comments:</h4>
+          
+          <div class="comments-list">
+            <div class="comment" *ngFor="let comment of event.comments">
+              <event-comment-item [comment]="comment"></event-comment-item>
+            </div>
+          </div>
+
+          <event-comment-form (addCommentEvent)="addComment($event)"></event-comment-form>
+
       </div>
     </div>
   
     <div class="box-right join-wrapper col-md-4 col-sm-4 col-xs-1">
       <div class="join">
-        <img class="host-image" src="{{host.image}}"><h5>{{host.username}}</h5>
+        <img class="host-image" src="{{host.image}}"><h5><a [routerLink]="['/host', host._id ]">{{host.username}}</a></h5>
         <p class="description">{{host.description}}</p>
         <hr>
         <p class="date">{{event.date | date:"dd/MM/yyyy"}}</p>
@@ -37,9 +48,11 @@
 
         <hr>
         
-
-        <button (click)="subscribeUser()" *ngIf="!isJoined" class="join">Join</button>
-
+        <div *ngIf="isJoined !== undefined">      
+          <button (click)="subscribeUser()" *ngIf="!isJoined || event.places <= 0" class="join">Join</button>
+          <button (click)="desubscribeUser()" *ngIf="isJoined" class="disjoin">Disjoin</button>
+        </div>
+      
       </div>
     </div>
 
@@ -48,7 +61,7 @@
         <h4>People Joined</h4>
         <hr>
         <div *ngFor="let guest of allGuests">
-          <img class="host-image" src="{{guest.image}}"><h5>{{host.username}}</h5>
+          <img class="host-image" src="{{guest.image}}"><h5>{{guest.username}}</h5>
 
         </div>
 

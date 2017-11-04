@@ -1,0 +1,21 @@
+:host{
+    display:block;
+    margin:15px 0px;
+    padding:10px 15px;
+    box-sizing: border-box;
+    background:#f9f9f9
+}
+
+span.user{
+    vertical-align:bottom;
+    margin-bottom:10px;
+    display:inline-block;
+}
+.user-comment {
+    width:36px;
+    height:36px;
+    border-radius:36px;
+    display:inline-block;
+    margin-right: 10px;
+    vertical-align:middle;
+}

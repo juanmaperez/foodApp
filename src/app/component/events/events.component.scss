@@ -6,6 +6,10 @@
 
 .events-list-title{
     padding:15px 0px;
+    width:90%;
+    margin: 0px auto !important;
+    display: block;
+
 }
 
 hr{
@@ -14,8 +18,7 @@ hr{
 }
 .events{
     padding:10px 0px;
-    float:left;
-
+    width:90%;
 }
 
 
@@ -29,5 +32,7 @@ hr{
 .card{
     border:0px;
     display: inline-block;
-    column-break-inside: avoid
+    column-break-inside: avoid;
+    margin-bottom:30px;
+    width:96%;
 }

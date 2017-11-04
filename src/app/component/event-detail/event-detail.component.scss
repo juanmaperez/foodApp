@@ -135,6 +135,16 @@
 
             button.join{
                 color:#fff;
+                background-color: #559955;
+                padding:15px 0px;
+                width:100%;
+                border-radius:3px;
+                border:0px;
+                margin:10px 0px;
+            }
+
+            button.disjoin{
+                color:#fff;
                 background-color: #f00;
                 padding:15px 0px;
                 width:100%;

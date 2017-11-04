@@ -108,6 +108,8 @@ export class CreateEventComponent implements OnInit {
                 //console.log("lng" , Lng);
                 //console.log("lng" , Lat);
                 this.event.address = place.name;
+                this.event.city = place.address_components[2].long_name;
+                // console.log("pueblo", place.address_components[1].long_name)
                 this.event.location_lat = Lat;
                 this.event.location_lng = Lng;
                   
@@ -119,8 +121,8 @@ export class CreateEventComponent implements OnInit {
                         if(results[0]){
                             let Lat = results[0].geometry.location.lat();
                             let Lng = results[0].geometry.location.lng();
-                            //console.log("coordinates lat" , Lat);
-                            //console.log("coordinates lng" , Lng);
+                            console.log("coordinates lat" , Lat);
+                            console.log("coordinates lng" , Lng);
             
                             // STORE INFO
                             this.user.address = place.name;

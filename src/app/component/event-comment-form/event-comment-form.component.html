@@ -1,0 +1,5 @@
+<form (ngSubmit)="addComment()" #commentForm="ngForm">
+
+  <textarea name="comment" id="comment" [(ngModel)]="comment.comment" required="required"></textarea>
+    <button type="submit">Add comment</button>
+  </form>
