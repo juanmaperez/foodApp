@@ -1,8 +1,20 @@
 
-  <div class="review-wrapper">
-    <form>
-      
-
-
-    </form>
-  </div>
+  
+  <div class="row">
+    <div class="review col-md-8">
+     <h4>Your review for {{ event.title }}</h4>
+      <form (ngSubmit)="onSubmitReviewData()" #myForm="ngForm">
+        <input id="title" name="title" placeholder="title" [(ngModel)]="review.title">
+        <textarea name="comment" placeholder="comment" [(ngModel)]="review.comment">Comment</textarea>
+        <h5>How would you rate the event ? </h5>
+        <ul class="block">
+          <li><label class="checkbox" (click)="toggleStar('star1')"         [ngClass]="{checked : ratings.star1 }"></label>   <input id="checkBox"  name="star1"  [(ngModel)]="ratings.star1"  type="checkbox"></li>
+          <li><label class="checkbox" (click)="toggleStar('star2')"         [ngClass]="{checked : ratings.star2 }"></label>   <input id="checkBox"  name="star2"  [(ngModel)]="ratings.star2"  type="checkbox"></li>
+          <li><label class="checkbox" (click)="toggleStar('star3')"         [ngClass]="{checked : ratings.star3 }"></label>   <input id="checkBox"  name="star3"  [(ngModel)]="ratings.star3"  type="checkbox"></li>
+          <li><label class="checkbox" (click)="toggleStar('star4')"         [ngClass]="{checked : ratings.star4 }"></label>   <input id="checkBox"  name="star4"  [(ngModel)]="ratings.star4"  type="checkbox"></li>
+          <li><label class="checkbox" (click)="toggleStar('star5')"         [ngClass]="{checked : ratings.star5 }"></label>   <input id="checkBox"  name="star5"  [(ngModel)]="ratings.star5"  type="checkbox"></li>
+        </ul>
+        <button type="submit">SUBMIT</button>
+      </form>
+    </div>
+</div>

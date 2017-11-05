@@ -1,5 +1,10 @@
 <hero></hero>
-<host-vs-guest></host-vs-guest>
-<host123></host123>  
+<host-vs-guest
+(hostClickEvent)="toggle123Host($event)"
+(guestClickEvent)="toggle123Guest($event)"
+></host-vs-guest>
+<host123 [className]="hostState"></host123>
+<guest123 [className]="guestState"></guest123>
 <join-community></join-community>
-<guest123></guest123>
+
+

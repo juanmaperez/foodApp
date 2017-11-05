@@ -1,14 +1,16 @@
-
 #userdata-wrapper{ margin-top: 100px; font-family: "Duru Sans"; }
-h3{ font-family: "Dorsa"; font-size: 46px; letter-spacing: 2px}
+h3{ font-family: "Dorsa"; font-size: 46px; letter-spacing: 1px}
 h4{ font-family: "Duru Sans"; font-size: 18px; margin-top: 40px; margin-bottom: 20px}
+h5 { font-family: "Duru Sans"; font-size: 15px; margin-top: 40px; margin-bottom: 0}
 p{ margin-top: 15px; margin-bottom: 6px; font-size: 15px; }
 input{ font-size: 15px; line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 55px; padding-left: 10px; padding-right: 10px;  }
 textarea { font-size: 15px; height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
 
-button{ width: 100px ; margin-top: 30px ; padding:  10px 15px 10px 15px ; background-color:#D10D27; color: #ffffff;  border-radius:  5px ; display: block; }
-
-
+button{ width: 100px ; margin-top: 30px ; padding:  12px 15px 10px 15px ; background-color:#D10D27; color: #ffffff;  border-radius:  5px ; display: block; }
+#reviewwrapper{ margin-top: 50px; padding: 0 };
+#reviewwrapper input{ font-size: 15px; line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 55px; padding-left: 10px; padding-right: 10px;  }
+#reviewwrapper textarea { font-size: 15px; height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
+.submitMsg{ position: relative; top: 20px }
   /*font-family: 'Monoton', cursive;
   font-family: 'Six Caps', sans-serif;
   font-family: 'Duru Sans', sans-serif;

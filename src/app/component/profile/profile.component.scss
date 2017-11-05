@@ -1,34 +1,47 @@
 
-div, p, h5, h4, h3{ font-family: "Duru Sans"; };
+div, p, h5, h4, h3{ font-family: "Duru Sans"; }
+
+ // ** MENU ICON FOR MOBILE ** //
 
 #profilewrapper{ margin-top: 50px; }
+#profilewrapper hr{ margin-top: 15px; margin-bottom: 15px }
 
-.profileimage img{
+
+.profileimage {
+    float: left;
     border-radius: 50%;
     border-color: #fff;
     border-style: solid;
     overflow: hidden;
+    height:200px;
+    width:200px;
+    background-size:cover;
+    background-position:center center;
 }
-.profiledata p       { font-size: 15px; font-style: italic }
-.username            { font-style: normal; font-size: 32px; margin-top: 40px; }
+
+.profiledata p       { font-size: 16px; font-style: normal }
+.username            { text-transform: uppercase; font-family: "Duru Sans"; font-style: normal; font-size: 34px; margin-top: 40px; margin-bottom: 20px; }
 .review-overall-title{ font-size: 18px; font-weight: bold; }
-.aboutme             { font-style: normal; font-weight: bold; font-size: 16px; line-height: 32px }
-.age                 { font-style: normal; font-weight: bold; font-size: 16px; line-height: 32px}
-.city                { font-style: normal; font-weight: bold; font-size: 16px; line-height: 32px}
+.aboutme             { font-family: "Dorsa"; font-style: normal; font-weight: bold; font-size: 40px; line-height: 32px; letter-spacing: 1px; }
+.age                 { font-family: "Dorsa"; font-style: normal; font-weight: bold; font-size: 40px; line-height: 32px; letter-spacing: 1px;}
+.city                { font-family: "Dorsa"; font-style: normal; font-weight: bold; font-size: 40px; line-height: 32px; letter-spacing: 1px;}
 
-
+.reviews-wrapper     { margin: 0; }
 .review-title        { font-size: 18px; font-weight: bold; line-height: 36px; }
 .review-text         { font-size: 13px; margin-bottom: 40px } 
+.username-thick      { text-transform: uppercase; }
+.star-event          { font-size: 16px; color:  #E71B1B }
+.events-header       { text-align: center; font-size: 24px; margin-top: 80px; margin-bottom: 30px; }
+
 
 .star-ratings.overall{
+    display: inline-block;
     unicode-bidi: bidi-override;
     color: #c5c5c5;
     font-size: 25px;
     height: 25px;
     width: 125px;
-    margin: 0 auto;
     position: relative;
-    left: -211px;
     padding: 0;
     text-shadow: 0px 1px 0 #a2a2a2;
     margin-bottom: 40px;  
@@ -53,13 +66,12 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; };
 
   .star-ratings.individual{
     position: relative;
-    left: -222px;
+    display: inline-block;
     unicode-bidi: bidi-override;
     color: #c5c5c5;
     font-size: 20px;
     height: 20px;
     width: 100px;
-    margin: 0 auto;
     position: relative;
     padding: 0;
     text-shadow: 0px 1px 0 #a2a2a2;
@@ -83,7 +95,7 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; };
   }
 
 .EVENTSWRAPPER{
-    text-align: center;
+    text-align: left;
 }
 
 .EVENTSWRAPPER h4{
@@ -118,7 +130,7 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; };
 }
 
 .eventwrapper .shortinfo{ 
-    text-transform: uppercase;
+    margin-left: 20px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden; 
@@ -126,16 +138,14 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; };
     padding-bottom: 10px;
 }
 .eventwrapper .eventtitle{
-
+    text-transform: uppercase;
     font-size: 24px;
     padding: 15px 20px 25px 20px;
 
 }
 .eventwrapper .event-description{
     padding: 20px 20px 10px 20px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden; 
+     
 
 }
 .eventwrapper .review{ font-size: 20px; }
@@ -157,8 +167,37 @@ hr{ background-color: #EEE; }
     column-gap:           0px;  
   }
   
-pics img {
+.pics img {
     /* Just in case there are inline attributes */
     width: 100% !important;
     height: auto !important;
   }
+
+
+  @media (max-width: 800px) {
+    .container{
+        text-align:center;
+    }
+    .profileimage{
+        float: none;
+    }
+    .profilewrapper, .eventwrapper,{
+        display: block;
+        width: 100%!important
+    }
+    .reviews-wrapper {
+        display: block;
+        width: 100%!important;
+        margin-top: 50px;
+    }
+      .age, .city, .aboutme{
+        display:block;
+        width: 100%!important;
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+    }
+
+}
+
+

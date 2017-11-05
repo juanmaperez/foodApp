@@ -19,8 +19,6 @@ export class ImageuploadComponent implements OnInit {
   
     id : string = '';
   
-    
-  
     imagepreview : any;
     
     uploader: FileUploader;
@@ -36,7 +34,7 @@ export class ImageuploadComponent implements OnInit {
     ngOnInit() {
       this.id=this.session.user._id;
       console.log("this.id", this.id);
-      console.log( "url", this.url)
+      console.log( "my url to upload img", this.url)
       this.uploader = new FileUploader({
         
          url: this.url
@@ -58,6 +56,8 @@ export class ImageuploadComponent implements OnInit {
   
     submit() {
         console.log("inside image upload");
+        console.log("this.id", this.id);
+        console.log( "url", this.url)
         
         this.uploader.onBuildItemForm = (item, form) => {
       

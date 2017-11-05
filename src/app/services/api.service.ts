@@ -21,9 +21,9 @@ export class ApiService {
   }
 
   getUserData(id){
-    console.log(`${this.BASE_URL}/api/users/${id}`)
+    console.log("INSIDE API GET USERID", `${this.BASE_URL}/api/users/${id}`)
     const options = this.setHeaders()
-    return this.http.get(`${this.BASE_URL}/api/users/${id}`, options )
+    return this.http.get(`${this.BASE_URL}/api/users/${id}` )
       .map((res)=>res.json());
   }  
   
@@ -31,31 +31,20 @@ export class ApiService {
     console.log("inside editProfilData + id", id);
     console.log("userdata", userdata);
     const options = this.setHeaders();
-    return this.http.put(`${this.BASE_URL}/api/users/${id}`, userdata)
+    return this.http.put(`${this.BASE_URL}/api/users/${id}`, userdata )
       .map((res)=>res.json());
   }
 
-  getList() {
-    console.log("asd",this.session.token)
-    let headers = new Headers({ 'Authorization': 'JWT ' +  this.session.token });
-    let options = new RequestOptions({ headers : headers });
-    return this.http.get(`${this.BASE_URL}/api/phones`, options)
-      .map((res) => res.json());
+  setReviewtoEvent( reviewdata, eventID ){
+    console.log("inside setReview", reviewdata)
+    return this.http.post(`${this.BASE_URL}/api/events/review/${eventID}`, reviewdata)
+    .map((res)=>res.json());
   }
 
-  get(id) {
-    return this.http.get(`${this.BASE_URL}/api/phones/${id}`)
-      .map((res) => res.json());
-  }
-
-  edit(phone) {
-    return this.http.put(`${this.BASE_URL}/api/phones/${phone._id}`, phone)
-      .map((res) => res.json());
-  }
-
-  remove(id) {
-    return this.http.delete(`${this.BASE_URL}/api/phones/${id}`)
-      .map((res) => res.json());
+  subscribeUser(userID, eventID ){
+    
+    return this.http.put(`${this.BASE_URL}/api/users/subscribe2event/${eventID}`, userID )
+      .map((res)=>res.json())
   }
 
 }

@@ -1,3 +1,26 @@
 <header>
-  <div id="MENUWRAPPER"><a href="/recipes">Find Cookies</a><a href="/setup-event">Offer Cookies</a><a class="button" href="/login">Log in</a><a class="button" href="/signup">Join</a></div>
+  <div id="MENUWRAPPER">
+    <a *ngIf="loggedIn === true" class="button profile" href="/profile">My profile</a>
+    <a class="button signup" href="/signup">Join us</a>
+    <a *ngIf="loggedIn === false" class="button login" href="/login">Log in</a>
+    <a *ngIf="loggedIn === true"  class="button logout" href="/logout">Log out</a>
+    <a class="events" href="/events">Find Events</a>
+    <a class="behost" href="events/create-event">Host event</a>
+  </div>
+  <div id="menu-png"><img (click)="toggleMenu" src="assets/images/menu.png" width="30"></div>
+  <div id="mobile-menu">
+    
+      <a *ngIf="loggedIn === false" href="/login">Login</a>
+      <hr>
+      <a *ngIf="loggedIn === true" href="/logout">Logout</a>
+      <hr>
+      <a *ngIf="loggedIn === true" href="/profile">Profile</a>
+      <hr>
+      <a href="/signup">Signup</a>  
+      <hr>    
+      <a href="/events">Find Events</a>
+      <hr>
+      <a href="/events/create-event">Be Host</a>
+
+  </div>
 </header>

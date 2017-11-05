@@ -1,102 +1,126 @@
-<div class="container">
+<!--<div class="container">
 
-  <div id="profilewrapper" class="row">
-      
-       <div class="profiledata col-md-6 col-sm-4 col-xs-4">
-         <p class="profileimage" *ngIf="user.image"><img src="{{user.image}}" width="200"></p>
-         <p class="profileimage"><img src="https://www.sideshowtoy.com/photo.php?sku=400302" width="200"></p>
-      
-          <h1 class="username" *ngIf="user.username">{{user.username}}</h1>
-          <div class="review-overall-title">84% positive Ratings</div>
-          <div class="star-ratings overall">
-              <div class="star-ratings-top" style="width: 84%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-              <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-          </div>
-          <p *ngIf="user.description"><span class="aboutme">About me </span> {{user.description}}</p>
-          <p *ngIf="user.age"> <span class="age">I am </span> {{user.age}}<span  class="age">&nbsp;years old</span> </p>
-          <p *ngIf="user.city"><span class="city">I live in </span> {{user.city}}</p>
-        
-        </div>
-
-  
-        <div class="col-md-6 col-sm-4 col-xs-4">
-                  
-            <div class="star-ratings individual">
-
-                <div class="star-ratings-top" style="width: 24%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <div class="row" id="userdata-wrapper">
+      <div class="col-md-8 col-sm-6 col-xs-4">
+        <h3>GET READY TO COOK</h3>
+        <p>Please share some information with us</p>
+          <form (ngSubmit)="submitProfileData()" #myForm="ngForm">
+            <input     value="" type="text"     name="username"    placeholder="username"              [(ngModel)]="user.username">
+            <input     value="" type="text"     name="email"       placeholder="email"                 [(ngModel)]="user.email">
+            <textarea  value="" type="textarea" name="description" placeholder="A few words about you" [(ngModel)]="user.description"></textarea>
+            <h5>I was born on</h5>
+            <input     value="" type="date"     name="birthdate"   placeholder=""                      [(ngModel)]="user.birthdate">
+            <h5>I live in</h5>
+            <input     value="" type="text"     name="street"      placeholder="street"                [(ngModel)]="user.street" id="street" >
+            <input     value="" type="text"     name="city"        placeholder="city"                  [(ngModel)]="user.city">
+            <h4>I want to be a host</h4>
+            <div class="block">
+               <label class="checkbox" (click)="toggleInput('user','host')" [ngClass]="{checked : user.host}"></label><span class="check-box">YES</span><input id="checkBoxHost" name="host" [(ngModel)]="user.host" type="checkbox">
             </div>
-            <div>
-              <p class="review-title">Excellent</p>
-              <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
-            </div>
-            <div class="star-ratings individual">
-                <div class="star-ratings-top" style="width: 60%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-            </div>
-            <div>
-                <p class="review-title">Great</p>
-                <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. </p>
-            </div>
-            <div class="star-ratings individual">
-                <div class="star-ratings-top" style="width: 95%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-            </div>
-            <div>  
-              <p class="review-title">Interesting fusion</p>
-              <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed</p>
-            </div>
-            <div class="star-ratings individual">
-                <div class="star-ratings-top" style="width: 66%"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-            </div>    
-            <div>
-              <p class="review-title">Great host</p>
-              <p class="review-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. </p>
-            </div>
-        </div>
-      
-   </div>
-        <div class="EVENTSWRAPPER col-md-10 col-sm-4 col-xs-4">
-
-          <h4>Events scheduled by {{ user.username }}</h4>
-          <div class="eventwrapper col-md-5 col-sm-4 col-xs-4">
-            
-                <img class="eventimage" src="https://res.cloudinary.com/eatwith/image/upload/c_fill,f_auto,fl_progressive,h_250,q_auto,w_340/v1/user_162148/oidkf80o4wwjkog6vwfk.jpg">
-                <p class="shortinfo"><img class="user-img-sm" src="https://www.sideshowtoy.com/photo.php?sku=400302" width="60">{{user.username}} in {{user.city}} Kochstil </p>
-                <p class="eventtitle">EVENT TITLE</p>
-                <hr>
-                <p class="event-description">Event description Event description Event description Event description</p>
-                <p class="event-price">90€</p>
-            
-          </div>
-          
-          <div class="eventwrapper col-md-5 col-sm-4 col-xs-4">
-              
-                  <img class="eventimage" src="https://res.cloudinary.com/eatwith/image/upload/c_fill,f_auto,fl_progressive,h_250,q_auto,w_340/v1/user_162148/oidkf80o4wwjkog6vwfk.jpg">
-                  <p class="shortinfo"><img class="user-img-sm" src="https://www.sideshowtoy.com/photo.php?sku=400302" width="60">{{user.username}} in {{user.city}} Kochstil </p>
-                  <p class="eventtitle">EVENT TITLE</p>
-                  <hr>
-                  <p class="event-description">Event description Event description Event description Event description</p>
-                  <p class="event-price">90€</p>
-              
-          </div>
-      </div>
-      <div class="row">
-
-          <div class="photogallery col-md-10">
-              <div class="pics">
-                <img src="https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/7812/SITours/london-food-walking-tour-london-bridge-and-borough-market-in-london-337617.jpg">
-  
-                <img src="https://www.fera.co.uk/media/catalog/category/food-selection.jpg">
-                <img src="https://media-cdn.urbanadventures.com/data/120/tour_860/c-fakepath-tour-hoi-an-food-adventure-lead.jpg">
-                <img src="https://cache-graphicslib.viator.com/graphicslib/thumbs360x240/7812/SITours/london-food-walking-tour-london-bridge-and-borough-market-in-london-337617.jpg">
-                <img src="http://food.fnr.sndimg.com/content/dam/images/food/fullset/2017/2/6/0/FNK_Food-That-Looks-Like-Flowers-Opener_s4x3.jpg.rend.hgtvcom.966.725.suffix/1486405265200.jpeg" width="200">
-  
+            <div class="row">
+                <div class="col-md-5 col-sm-4 col-xs-4">
+                  <h4>My favourite foods</h4>
+                  <ul class="block" id="user.favfoods">
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','asia')"         [ngClass]="{checked : favfoods.asia}"></label>       <span class="check-box">Asia       </span>     <input id="checkBox"  name="asia"         [(ngModel)]="favfoods.asia"         type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','traditional')"  [ngClass]="{checked : favfoods.traditional}"></label><span class="check-box">Traditional</span>     <input id="checkBox"  name="traditional"  [(ngModel)]="favfoods.traditional"  type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','italian')"      [ngClass]="{checked : favfoods.italian}"></label>    <span class="check-box">Italian    </span>     <input id="checkBox"  name="italian"      [(ngModel)]="favfoods.italian"      type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','baking')"       [ngClass]="{checked : favfoods.baking}"></label>     <span class="check-box">Baking     </span>     <input id="checkBox"  name="baking"       [(ngModel)]="favfoods.baking"       type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','vegan')"        [ngClass]="{checked : favfoods.vegan}"></label>      <span class="check-box">Vegan      </span>     <input id="checkBox"  name="vegan"        [(ngModel)]="favfoods.vegan"        type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','glutenfree')"   [ngClass]="{checked : favfoods.glutenfree}"></label> <span class="check-box">Gluten-free</span>     <input id="checkBox"  name="glutenfree"   [(ngModel)]="favfoods.glutenfree"   type="checkbox"></li>
+                  </ul>
               </div>
-
+              <div class="col-md-6 col-sm-4 col-xs-4">
+                <h4>My special foods</h4>
+                <ul class="block" id="user.specialities">
+                      <li><label class="checkbox" (click)="toggleInput('specialities','asia')"         [ngClass]="{checked : specialities.asia}"></label>        <span class="check-box">Asia</span>             <input id="checkBox"   name="asia"         [(ngModel)]="specialities.asia"         type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','traditional')"  [ngClass]="{checked : specialities.traditional}"></label> <span class="check-box">Traditional</span>      <input id="checkBox"   name="traditional"  [(ngModel)]="specialities.traditional"  type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','italian')"      [ngClass]="{checked : specialities.italian}"></label>     <span class="check-box">Italian</span>          <input id="checkBox"   name="italian"      [(ngModel)]="specialities.italian"      type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','baking')"       [ngClass]="{checked : specialities.baking}"></label>      <span class="check-box">Baking</span>           <input id="checkBox"   name="baking"       [(ngModel)]="specialities.baking"       type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','vegan')"        [ngClass]="{checked : specialities.vegan}"></label>       <span class="check-box">Vegan</span>            <input id="checkBox"   name="vegan"        [(ngModel)]="specialities.vegan"        type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','glutenfree')"   [ngClass]="{checked : specialities.glutenfree}"></label>  <span class="check-box">Gluten-free</span>      <input id="checkBox"   name="glutenfree"   [(ngModel)]="specialities.glutenfree"   type="checkbox"></li>
+                </ul>
+              </div>
+            </div>
+            <button type="submit">SAVE</button><span class="submitMsg">{{submitMessage}}</span>
+          </form>
+        </div>
       </div>
+  </div>
+  <agm-map></agm-map>
+  <imageupload [url]="url"></imageupload>
   
-  <h4>Past events hosted by {{ user.username }}</h4>
+  <div class="row" *ngIf="writeReviews">
+    
+    <div class="col-md-8 col-sm-6 col-xs-4" *ngFor="let event of eventsToBeRated">
+      
+        <div id="reviewwrapper" class="col-md-8 col-sm-6 col-xs-4">
+      
+          <h3>EVENTS YOU CAN REVIEW</h3>
+        </div>
+        <create-review [event]="event"></create-review>
+       </div>
+     
+  </div>-->
 
-</div>
+  <div class="container">
+        
+          <div id="profilewrapper" class="row">
+              
+               <div class="profiledata col-md-6">
+                 <div class="profileimage" [ngStyle]="{'background-image':'url('+ user.image +')'}"></div>
+                                           
+                  <h1 class="username" *ngIf="user.username">{{user.username}}</h1>
+                
+                  <div class="review-overall-title" *ngIf="reviewsExist === true">{{overallRating}} positive Ratings</div>
+                  <div class="star-ratings overall">
+                      <div id="overallrating" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  </div>
+                  <hr>
+                  <p *ngIf="user.description"><span class="aboutme">About me </span> {{user.description}}</p>
+                  <hr>
+                  <p *ngIf="user.age"> <span class="age">I am </span> <span class="userage"> {{user.age}}&nbsp;years old</span></p>
+                  <hr>
+                  <p *ngIf="user.city"><span class="city">I live in </span> {{user.city}}</p>
+                  <hr>
+                </div>
+        
+                <div class="reviews-wrapper col-md-6">
+                   
+                    <div *ngFor="let review of reviews; let i = index">
+                      <div class="star-ratings individual">
+          
+                          <div id="review{{i}}" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                          <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      </div>
+                      <div>
+                        <p class="review-title">{{ review.title }}</p>
+                        <p class="review-text"> {{ review.comment }}</p>
+                      </div>
+                    </div>
+
+                </div>
+              
+            </div>
+            <div *ngIf="events">
+              <h4 class="events-header">Events hosted by {{ user.username }}</h4>
+              
+              <div class="EVENTSWRAPPER row col-md-12">
+                   
+                        <div *ngFor="let event of events" class="eventwrapper col-md-5">
+                            
+                                <img class="eventimage" src="{{event.image}}">
+                                <p class="shortinfo"><span class="star-event">★&nbsp;</span>Hosted by &nbsp;<span class="username-thick">{{user.username}}&nbsp;</span>in {{event.city}}</p>
+                                <p *ngIf="event.title" class="eventtitle">{{event.title}}</p>
+                                <hr>
+                                <p *ngIf="event.description" class="event-description">{{event.description}}</p>
+                                <p *ngIf="event.contribution" class="event-price">{{event.contribution}}&nbsp;€</p>
+                            
+                        </div>
+              
+                   
+                </div>
+            </div>
+        </div>
+        
+  

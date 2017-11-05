@@ -1,0 +1,113 @@
+
+.review{ margin-top: 50px; padding: 0 }
+
+input    { font-family: "Duru Sans"; font-size: 15px; line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 55px; padding-left: 10px; padding-right: 10px;  }
+textarea { font-family: "Duru Sans"; font-size: 15px; height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
+
+.block{
+    width:200px;
+    position:relative;
+    clear:both;
+    margin:0 0 25px;
+  }
+
+  .block input{
+    display:none;  
+  }
+  li{ display: inline-block; width: 25px; height: 25px }
+
+  label.checkbox:before{
+    display: inline-block;
+    content:'★';
+    font-size: 25px;
+    width:25px;
+    height:25px;
+    position:absolute;
+    background:white;
+    left:2px;
+    top:3px;
+    color:black; 
+    
+  }
+  label.checkbox.checked:before{
+    display: inline-block;
+    content:'★';
+    font-size: 25px;
+    width: 25px;
+    height:25px;
+    position:absolute;
+    background:#ffffff;
+    left:2px;
+    top:3px;
+  
+    color:#F5AB0C; 
+  }
+  button[type=submit]{
+    font-family: "Duru Sans"; width: 100px ; margin-top: 30px ; padding:  12px 15px 10px 15px ; color: #ffffff;  border-radius:  5px ; display: inline-block; 
+    background-color: #397d94;
+  }
+  h3{ font-family: "Dorsa"; font-size: 46px; letter-spacing: 1px}
+  h4{ font-family: "Duru Sans"; font-size: 18px; margin-top: 40px; margin-bottom: 20px}
+  h5{ font-family: "Duru Sans"; font-size: 18px; margin-top: 40px; margin-bottom: 20px}
+  
+  .star-ratings.overall{
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    font-size: 25px;
+    height: 25px;
+    width: 125px;
+    margin: 0 auto;
+    position: relative;
+    left: -211px;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
+    margin-bottom: 40px;  
+}
+.star-ratings.overall .star-ratings-top {
+    
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .star-ratings.overall .star-ratings-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }
+
+  .star-ratings.individual{
+    position: relative;
+    left: -222px;
+    unicode-bidi: bidi-override;
+    color: #c5c5c5;
+    font-size: 20px;
+    height: 20px;
+    width: 100px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    text-shadow: 0px 1px 0 #a2a2a2;
+    
+}
+.star-ratings.individual .star-ratings-top {
+    color: #e7711b;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
+
+  .star-ratings.individual .star-ratings-bottom {
+    padding: 0;
+    display: block;
+    z-index: 0;
+  }

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Host123Component } from '../../component/host123/host123.component';
-import { Guest123Component } from '../../component/guest123/guest123.component';
-import { BrowserAnimationsModule }  from '@angular/platform-browser/animations';
-import { NoopAnimationsModule }     from '@angular/platform-browser/animations';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Host123Component }                        from '../../component/host123/host123.component';
+import { Guest123Component }                       from '../../component/guest123/guest123.component';
+import { BrowserAnimationsModule }                 from '@angular/platform-browser/animations';
+import { NoopAnimationsModule }                    from '@angular/platform-browser/animations';
 
 import {
   trigger,
@@ -27,13 +27,16 @@ export class HostVsguestComponent implements OnInit {
     //let state;
   }
 
-  toggleGuest(){
-    this.guest123.toggle123Guest();
+  @Output() guestClickEvent = new EventEmitter();
+  @Output() hostClickEvent  = new EventEmitter();
 
+  onClickButtonHost(event){
+    console.log("emitting event");
+    this.hostClickEvent.emit("host")
   }
-
-  toggleHost(){
-    this.host123.toggle123Host();
+  onClickButtonGuest(event){
+    console.log("emitting event");
+    this.guestClickEvent.emit("guest")
   }
 
 }

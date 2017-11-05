@@ -41,22 +41,23 @@ import { ImageuploadComponent }     from './component/imageupload/imageupload.co
 import { ProfileComponent }         from './component/profile/profile.component';
 import { GoogleMapComponent }       from './component/google-map/google-map.component';
 import { CreateReviewComponent }    from './component/create-review/create-review.component';
+import { LogoutComponent } from './component/logout/logout.component';
 
 // canActivate
 export const routes: Routes = [
   { path: '',               component: HomeComponent   },
-  { path: 'login',          component: LoginComponent  }, 
+  { path: 'login',          component: LoginComponent  },
+  { path: 'logout',         component: LogoutComponent }, 
   { path: 'signup',         component: SignupComponent },
   { path: 'profile',        component: ProfileComponent,  canActivate: [ SessionService ]  },
   { path: 'profile-edit',   component: EditProfileComponent,  canActivate: [ SessionService ]  },
+  { path: 'create-review',  component: CreateReviewComponent, canActivate: [ SessionService ] },
   { path: 'events',         component: EventsComponent, 
          children: [ { path: ':id', component: EventComponent, canActivate: [ SessionService ] }] 
   },
   { path: 'create-event',   component: CreateEventComponent, canActivate: [ SessionService ] },
   { path: 'categories',     component: CategoriesComponent },
-  { path: 'hosts',          component: HostsComponent,
-         children: [ { path: ':id', component: HostComponent, canActivate: [ SessionService ] }] 
-  },  
+  { path: 'host', component: HostComponent },  
   { path: '**', redirectTo: '' }
   
 ];
@@ -90,6 +91,8 @@ export const routes: Routes = [
     FileSelectDirective,
 
     CreateReviewComponent,
+
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

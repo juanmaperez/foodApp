@@ -1,4 +1,3 @@
-
 <div class="container">
 
     <div class="row" id="userdata-wrapper">
@@ -9,13 +8,12 @@
             <input     value="" type="text"     name="username"    placeholder="username"              [(ngModel)]="user.username">
             <input     value="" type="text"     name="email"       placeholder="email"                 [(ngModel)]="user.email">
             <textarea  value="" type="textarea" name="description" placeholder="A few words about you" [(ngModel)]="user.description"></textarea>
-            <input     value="" type="text"     name="age"         placeholder="age"                   [(ngModel)]="user.age">
+            <h5>I was born on</h5>
+            <input     value="" type="date"     name="birthdate"   placeholder=""                      [(ngModel)]="user.birthdate">
+            <h5>I live in</h5>
             <input     value="" type="text"     name="street"      placeholder="street"                [(ngModel)]="user.street" id="street" >
             <input     value="" type="text"     name="city"        placeholder="city"                  [(ngModel)]="user.city">
-            <h4>I want to be a host</h4>
-            <div class="block">
-               <label class="checkbox" (click)="toggleInput('user','host')" [ngClass]="{checked : user.host}"></label><span class="check-box">YES</span><input id="checkBoxHost" name="host" [(ngModel)]="user.host" type="checkbox">
-            </div>
+            
             <div class="row">
                 <div class="col-md-5 col-sm-4 col-xs-4">
                   <h4>My favourite foods</h4>
@@ -40,7 +38,7 @@
                 </ul>
               </div>
             </div>
-            <button type="submit">SAVE</button>
+            <button type="submit">SAVE</button><span class="submitMsg">{{submitMessage}}</span>
           </form>
         </div>
       </div>
@@ -48,10 +46,17 @@
   <agm-map></agm-map>
   <imageupload [url]="url"></imageupload>
   
-  <div *ngIf="eventsToBeRated" >
-    <div class="col-md-3" *ngFor="let event of eventsToBeRated">
-      <create-review [event]="event"></create-review>
-    </div>
+  <div class="row" *ngIf="writeReviews">
+    
+    <div class="col-md-8 col-sm-6 col-xs-4" *ngFor="let event of eventsToBeRated">
+      
+        <div id="reviewwrapper" class="col-md-8 col-sm-6 col-xs-4">
+      
+          <h3>EVENTS YOU CAN REVIEW</h3>
+        </div>
+        <create-review [event]="event"></create-review>
+       </div>
+     
   </div>
   
 
