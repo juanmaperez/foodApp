@@ -22,8 +22,8 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
   
-    /*console.log("in navbar");
-    if(this.session.isAuth === true){
+    //this.session.canActivate
+    /*if(this.session.isAuth === true){
       this.loggedIn = true;
       console.log("loggedIN")
     }else if(this.session.isAuth === false){
@@ -41,6 +41,7 @@ export class NavbarComponent implements OnInit {
     else{
       this.loggedIn = false;
     }
+    
     document.getElementById('menu-png').addEventListener("click", this.toggleMenu);
     let mobilemenu = document.getElementById('mobile-menu')
     mobilemenu.addEventListener("mouseleave", this.hideMobileMenu );  

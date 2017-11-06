@@ -47,9 +47,11 @@ export class ProfileComponent implements OnInit, AfterViewInit {
         
         let today = Date.now();
         
-        var birthdate = new Date(userdata.user.birthdate+"").valueOf();
-        let age = Math.floor((birthdate - today) / 60 / 60 / 24 / 365);
-         
+        var birthdate = new Date(userdata.user.birthdate+"")
+        var birthTS = new Date(userdata.user.birthdate+"").valueOf();
+        
+        let age = Math.floor((today - birthTS) / 1000 / 60 / 60 / 24 / 365);
+                 
         //** ASSIGN USER DATA FROM API TO LOCAL USERDATA */
         this.user             = userdata.user;
         

@@ -81,6 +81,7 @@ export class SessionService implements CanActivate {
   }
 
   signup(user){
+    console.log("in signup")
     return this.http.post(`${this.BASE_URL}/signup`, user)
       .map((res)=> res.json())
       .map((res)=>{
