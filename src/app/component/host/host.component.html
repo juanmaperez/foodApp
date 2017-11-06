@@ -1,3 +1,62 @@
-<p>
-  host works!
-</p>
+<div class="container">
+    
+      <div id="profilewrapper" class="row">
+          
+           <div class="profiledata col-md-6 col-sm-4 col-xs-4">
+             <div class="profileimage"><img src="{{user.image}}" width="200"></div>
+                                       
+              <h1 class="username" *ngIf="user.username">{{user.username}}</h1>
+            
+              <div class="review-overall-title" *ngIf="reviews === true">{{overallRating}} positive Ratings</div>
+              <div  *ngIf="reviews === true" class="star-ratings overall">
+                  <div id="overall-rating" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+              </div>
+              
+              <p *ngIf="user.description"><span class="aboutme">About me </span> {{user.description}}</p>
+              <p *ngIf="user.age"> <span class="age">I am </span> {{user.age}}&nbsp;<span  class="age">&nbsp;&nbsp;years old</span> </p>
+              <p *ngIf="user.city"><span class="city">I live in </span> {{user.city}}</p>
+            
+            </div>
+    
+            <div *ngIf="reviews === true" class="reviews-wrapper col-md-6 col-sm-4 col-xs-4">
+               
+                <div *ngFor="let review of reviews; let i = index">
+                  <div class="star-ratings individual">
+      
+                      <div id="{{i}}" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                      <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                  </div>
+                  <div>
+                    <p class="review-title">{{ review.title }}</p>
+                    <p class="review-text"> {{ review.comment }}</p>
+                  </div>
+                </div>
+
+            </div>
+          
+        </div>
+        <div *ngIf="events">
+          <h4 class="events-header">Events scheduled by {{ user.username }}</h4>
+          <div *ngFor="let event of events" class="EVENTSWRAPPER row col-md-12 col-sm-4 col-xs-4">
+            
+              
+              <div class="eventwrapper col-md-5 col-sm-4 col-xs-4">
+                  
+                      <img class="eventimage" src="{{event.image}}">
+                      <p class="shortinfo"><span class="star-event">★&nbsp;</span>Hosted by &nbsp;<span class="username-thick">{{user.username}}&nbsp;</span>in {{user.city}}</p>
+                      <p *ngIf="event.title" class="eventtitle">{{event.title}}</p>
+                      <hr>
+                      <p *ngIf="event.description" class="event-description">{{event.description}}</p>
+                      <p *ngIf="event.price" class="event-price">{{event.contribution}}&nbsp;€</p>
+                  
+              </div>
+          
+          </div>
+      </div>
+      
+    </div>
+    
+
+
+    

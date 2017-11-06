@@ -1,0 +1,62 @@
+<div class="container">
+
+    <div class="row" id="userdata-wrapper">
+      <div class="col-md-8 col-sm-6 col-xs-4">
+        <h3>GET READY TO COOK</h3>
+        <p>Please share some information with us</p>
+          <form (ngSubmit)="submitProfileData()" #myForm="ngForm">
+            <input     value="" type="text"     name="username"    placeholder="username"              [(ngModel)]="user.username">
+            <input     value="" type="text"     name="email"       placeholder="email"                 [(ngModel)]="user.email">
+            <textarea  value="" type="textarea" name="description" placeholder="A few words about you" [(ngModel)]="user.description"></textarea>
+            <h5>I was born on</h5>
+            <input     value="" type="date"     name="birthdate"   placeholder=""                      [(ngModel)]="user.birthdate">
+            <h5>I live in</h5>
+            <input     value="" type="text"     name="street"      placeholder="street"                [(ngModel)]="user.street" id="street" >
+            <input     value="" type="text"     name="city"        placeholder="city"                  [(ngModel)]="user.city">
+            
+            <div class="row">
+                <div class="col-md-5 col-sm-4 col-xs-4">
+                  <h4>My favourite foods</h4>
+                  <ul class="block" id="user.favfoods">
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','asia')"         [ngClass]="{checked : favfoods.asia}"></label>       <span class="check-box">Asia       </span>     <input id="checkBox"  name="asia"         [(ngModel)]="favfoods.asia"         type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','traditional')"  [ngClass]="{checked : favfoods.traditional}"></label><span class="check-box">Traditional</span>     <input id="checkBox"  name="traditional"  [(ngModel)]="favfoods.traditional"  type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','italian')"      [ngClass]="{checked : favfoods.italian}"></label>    <span class="check-box">Italian    </span>     <input id="checkBox"  name="italian"      [(ngModel)]="favfoods.italian"      type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','baking')"       [ngClass]="{checked : favfoods.baking}"></label>     <span class="check-box">Baking     </span>     <input id="checkBox"  name="baking"       [(ngModel)]="favfoods.baking"       type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','vegan')"        [ngClass]="{checked : favfoods.vegan}"></label>      <span class="check-box">Vegan      </span>     <input id="checkBox"  name="vegan"        [(ngModel)]="favfoods.vegan"        type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('favfoods','glutenfree')"   [ngClass]="{checked : favfoods.glutenfree}"></label> <span class="check-box">Gluten-free</span>     <input id="checkBox"  name="glutenfree"   [(ngModel)]="favfoods.glutenfree"   type="checkbox"></li>
+                  </ul>
+              </div>
+              <div class="col-md-6 col-sm-4 col-xs-4">
+                <h4>My special foods</h4>
+                <ul class="block" id="user.specialities">
+                      <li><label class="checkbox" (click)="toggleInput('specialities','asia')"         [ngClass]="{checked : specialities.asia}"></label>        <span class="check-box">Asia</span>             <input id="checkBox"   name="asia"         [(ngModel)]="specialities.asia"         type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','traditional')"  [ngClass]="{checked : specialities.traditional}"></label> <span class="check-box">Traditional</span>      <input id="checkBox"   name="traditional"  [(ngModel)]="specialities.traditional"  type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','italian')"      [ngClass]="{checked : specialities.italian}"></label>     <span class="check-box">Italian</span>          <input id="checkBox"   name="italian"      [(ngModel)]="specialities.italian"      type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','baking')"       [ngClass]="{checked : specialities.baking}"></label>      <span class="check-box">Baking</span>           <input id="checkBox"   name="baking"       [(ngModel)]="specialities.baking"       type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','vegan')"        [ngClass]="{checked : specialities.vegan}"></label>       <span class="check-box">Vegan</span>            <input id="checkBox"   name="vegan"        [(ngModel)]="specialities.vegan"        type="checkbox"></li>
+                      <li><label class="checkbox" (click)="toggleInput('specialities','glutenfree')"   [ngClass]="{checked : specialities.glutenfree}"></label>  <span class="check-box">Gluten-free</span>      <input id="checkBox"   name="glutenfree"   [(ngModel)]="specialities.glutenfree"   type="checkbox"></li>
+                </ul>
+              </div>
+            </div>
+            <button type="submit">SAVE</button><span class="submitMsg">{{submitMessage}}</span>
+          </form>
+        </div>
+      </div>
+  </div>
+  <agm-map></agm-map>
+  <imageupload [url]="url"></imageupload>
+  
+  <div class="row" *ngIf="writeReviews">
+    
+    <div class="col-md-8 col-sm-6 col-xs-4" *ngFor="let event of eventsToBeRated">
+      
+        <div id="reviewwrapper" class="col-md-8 col-sm-6 col-xs-4">
+      
+          <h3>EVENTS YOU CAN REVIEW</h3>
+        </div>
+        <create-review [event]="event"></create-review>
+       </div>
+     
+  </div>
+  
+

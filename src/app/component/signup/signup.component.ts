@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
       password : " "
     }
 
-    message = null;
+    signupMessage = null;
     
   constructor(
     private session: SessionService,
@@ -29,10 +29,11 @@ export class SignupComponent implements OnInit {
     this.session.signup(this.user)
       .subscribe(
         (data)=>{
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/profile-edit']);
         }, 
         (err)=>{
-          this.message = JSON.parse(err.body).message;
+          this.signupMessage = JSON.parse(err.body).message;
+          console.log("msg",this.signupMessage)
         }
       )
   }

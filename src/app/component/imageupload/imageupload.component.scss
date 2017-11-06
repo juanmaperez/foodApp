@@ -1,0 +1,49 @@
+
+#uploadwrapper{ margin-top: 100px; font-family: "Duru Sans"; }
+h3{ font-size: 46px; font-family: "Dorsa"; letter-spacing: 1px; margin-bottom: 20px }
+
+input{ line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 55px; padding-left: 10px; padding-right: 10px;  }
+textarea { height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
+
+button{ width: 100px ; margin-top: 30px ; padding:  10px 15px 10px 15px ; background-color:#D10D27; color: #ffffff;  border-radius:  5px ; display: block; }
+
+.fileContainer {
+    overflow: hidden;
+    position: relative;
+}
+
+.fileContainer [type=file] {
+    
+    background-color: grey;
+    cursor: inherit;
+    display: block;
+    font-size: 999px;
+    filter: alpha(opacity=0);
+    min-height: 100%;
+    min-width: 100%;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+    top: 0;
+}
+
+.fileContainer {
+    text-align:center;
+    background: #397d94;
+    color: #ffffff;
+    border-radius: 5px;
+    width: 150px;
+    padding: .5em;
+    margin-bottom: 20px;
+}
+.fileContainer:hover {
+    cursor: pointer;
+}
+.fileContainer input:hover {
+    cursor: pointer;
+}
+
+.fileContainer [type=file]:hover {
+    cursor: pointer;
+}

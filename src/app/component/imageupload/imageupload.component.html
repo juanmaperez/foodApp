@@ -1,0 +1,22 @@
+<div class="container">
+
+  
+  <div class="row" id="uploadwrapper">
+    <div class="col-md-8 col-sm-6 col-xs-4">
+      <h3>SET PROFILE IMAGE</h3>
+      <form>
+      
+        <label class="fileContainer">
+            Select file
+            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        </label>
+
+        <button (click)="submit()">UPLOAD</button>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-4 col-sm-4 col-xs-4">
+     <img src="" width="200" id="imagepreview">
+  </div>
+
+</div>

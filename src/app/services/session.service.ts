@@ -42,13 +42,12 @@ export class SessionService implements CanActivate {
   }
 
   login(user){
-    console.log("in login");
+   
     return this.http.post(`${this.BASE_URL}/login`, user)
     .map((res) => res.json())
     .map((res) => {
-      console.log("login success session service");
+     
       const { token, user } = res
-      console.log('token', token);
 
       if(token){
         this.token = token;
@@ -57,7 +56,6 @@ export class SessionService implements CanActivate {
                       username: user.username
                     }
 
-        console.log("this user", this.user);
         this.isAuth = true;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(this.user));
@@ -70,6 +68,18 @@ export class SessionService implements CanActivate {
 
   }//res => res.json().data as Query[]; WHAT DOES THIS LINE DO
   
+  logout(){
+    console.log("inside service logout")
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    console.log(localStorage.getItem( 'token'));
+    console.log(localStorage.getItem( 'user'));
+
+    this.isAuth = false;
+    console.log("this.isAuth",this.isAuth);
+    this.router.navigate(['/']);
+  }
+
   signup(user){
     return this.http.post(`${this.BASE_URL}/signup`, user)
       .map((res)=> res.json())
@@ -78,12 +88,15 @@ export class SessionService implements CanActivate {
      
       if(token){
         this.token = token;
-        this.user = jwtDecode(token);
-        console.log(this.user)
+        this.user = { 
+                      _id : user._id,
+                      username: user.username
+                    }
+    
         this.isAuth = true;
         localStorage.setItem( 'token', token);
-        localStorage.setItem( user, JSON.stringify(this.user));
-
+        localStorage.setItem( 'user', JSON.stringify(this.user));
+    
         return this.user
 
       }else{

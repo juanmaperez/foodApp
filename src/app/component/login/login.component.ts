@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log("data after login", data);
-          this.router.navigate(['/hosts']);
+          this.router.navigate(['/profile']);
         },
         (err) => {
           

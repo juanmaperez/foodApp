@@ -618,7 +618,7 @@ font-family: 'Nova Cut', cursive;
 }
 body {
   background-color: #ffffff;
-  font-family: 'Nova Cut';
+  font-family: 'Duru Sans';
 }
 body .ui-widget-header {
   border: none;
@@ -801,6 +801,17 @@ body #HERO #claimwrapper #claim .button a {
     width: 90%;
   }
 }
+body #HERO  {
+    @media screen and (max-width: 1000px) {
+      text-align:center!important;
+      }
+   }
+  body #HERO img {
+    @media screen and (max-width: 1000px) {
+      margin: 0;
+      width: 100%!important;
+      }
+  }
 body #CHOOSEWRAPPER {
   background-image: url('/assets/images/tomatoes2.jpg');
   background-repeat: no-repeat;
@@ -1049,4 +1060,7 @@ body #BEHOSTWRAPPER .one-third {
 }
 
 
+<<<<<<< HEAD
 .row{margin:0px !important}
+=======
+>>>>>>> f72dccc9394c4fec2923477ebdddbdc3f5b929b6
