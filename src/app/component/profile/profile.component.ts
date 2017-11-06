@@ -1,7 +1,7 @@
 import { jwtDecode }                        from 'jwt-decode';
 import { Router }                           from '@angular/router';
 import { SessionService }                   from './../../services/session.service';
-import { Component, OnInit }                from '@angular/core';
+import { Component, OnInit, AfterViewInit, Directive }                from '@angular/core';
 import { ApiService }                       from './../../services/api.service';
 
 @Component({
@@ -9,7 +9,14 @@ import { ApiService }                       from './../../services/api.service';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit {
+
+
+/*declare const $:any;
+@Directive({
+  selector: '[callback]'
+})*/
+
+export class ProfileComponent implements OnInit, AfterViewInit {
   user: any = {};
   userId: any = "";
   imageExists     : Boolean = false;
@@ -19,6 +26,7 @@ export class ProfileComponent implements OnInit {
   reviewsExist    : Boolean = false;
   reviews         : Array<any>;
   overallRating   : String = "";
+  timeout         : any;
 
   constructor(
     private session: SessionService,
@@ -30,7 +38,7 @@ export class ProfileComponent implements OnInit {
     this.userId = this.session.user._id;
     
   }
-
+  
   ngAfterViewInit(){
 
     
@@ -58,23 +66,24 @@ export class ProfileComponent implements OnInit {
           }  
         }
         this.events           = userdata.events;
-        console.log("events", this.events);
+       
         this.reviews          = userdata.reviews;
-        console.log(this.reviews, "this.reviews before ngafterviewinit")
+       
         this.user.age         = age;
-
+        
         if(this.reviews != undefined){
           if(this.reviews.length > 0){
             this.reviewsExist = true;
+
           }
         }
-       
+         
         let overallrating = 0;
         for(let i=0; i < this.reviews.length; i++){
-          
+         
           overallrating += this.reviews[i].puntuation;
-          let myreview = document.getElementById("review1");
-          
+          //let myreview = document.getElementById("review1");
+          //console.log(myreview)
           //.style.width=this.reviews[i].rating;
         }
 
@@ -87,5 +96,6 @@ export class ProfileComponent implements OnInit {
     })    
     
   }
-      
+
+     
 }

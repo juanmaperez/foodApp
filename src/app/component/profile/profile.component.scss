@@ -6,7 +6,6 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; }
 #profilewrapper{ margin-top: 50px; }
 #profilewrapper hr{ margin-top: 15px; margin-bottom: 15px }
 
-
 .profileimage {
     float: left;
     border-radius: 50%;
@@ -32,6 +31,7 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; }
 .username-thick      { text-transform: uppercase; }
 .star-event          { font-size: 16px; color:  #E71B1B }
 .events-header       { text-align: center; font-size: 24px; margin-top: 80px; margin-bottom: 30px; }
+.myrating            { color: #e7711b; }
 
 
 .star-ratings.overall{
@@ -71,10 +71,10 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; }
     color: #c5c5c5;
     font-size: 20px;
     height: 20px;
-    width: 100px;
+    width: 100%;
     position: relative;
     padding: 0;
-    text-shadow: 0px 1px 0 #a2a2a2;
+    
     
 }
 .star-ratings.individual .star-ratings-top {

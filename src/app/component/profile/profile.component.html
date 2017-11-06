@@ -87,15 +87,17 @@
         
                 <div class="reviews-wrapper col-md-6">
                    
-                    <div *ngFor="let review of reviews; let i = index">
+                    <div *ngFor="let review of reviews; let i = index; let last = last">
                       <div class="star-ratings individual">
-          
-                          <div id="review{{i}}" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                          <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                          <div><span class="myrating">{{ review.rating }} %</span> positive experience</div>  
+                          <!--<div id="review{{i}}" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                          <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>-->
                       </div>
                       <div>
+                        <hr>
                         <p class="review-title">{{ review.title }}</p>
                         <p class="review-text"> {{ review.comment }}</p>
+                        <hr>
                       </div>
                     </div>
 
