@@ -15,6 +15,7 @@
           <li><label class="checkbox" (click)="toggleStar('star5')"         [ngClass]="{checked : ratings.star5 }"></label>   <input id="checkBox"  name="star5"  [(ngModel)]="ratings.star5"  type="checkbox"></li>
         </ul>
         <button type="submit">SUBMIT</button>
+        <!--<div class="reviewSubmit" [ngIf]="reviewSubmit">{{ reviewSubmit }}</div>-->
       </form>
     </div>
 </div>

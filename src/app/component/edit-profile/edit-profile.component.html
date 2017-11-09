@@ -11,7 +11,7 @@
             <h5>I was born on</h5>
             <input     value="" type="date"     name="birthdate"   placeholder=""                      [(ngModel)]="user.birthdate">
             <h5>I live in</h5>
-            <input     value="" type="text"     name="street"      placeholder="street"                [(ngModel)]="user.street" id="street" >
+            <input     value="" type="text"     name="address"      placeholder="address"                [(ngModel)]="user.address" id="street" >
             <input     value="" type="text"     name="city"        placeholder="city"                  [(ngModel)]="user.city">
             
             <div class="row">
@@ -38,7 +38,7 @@
                 </ul>
               </div>
             </div>
-            <button type="submit">SAVE</button><span class="submitMsg">{{submitMessage}}</span>
+            <button type="submit">SAVE</button><span *ngIf="submitMessage !='' " class="submitMsg">{{ submitMessage }}</span>
           </form>
         </div>
       </div>

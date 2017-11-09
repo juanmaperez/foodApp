@@ -31,6 +31,7 @@ export class EditProfileComponent implements OnInit {
     
     submitMessage : String = ""; 
 
+
     user = {
       username    : "",
       email       : "",
@@ -97,11 +98,25 @@ export class EditProfileComponent implements OnInit {
         (userdata)=>{
           console.log("userdata in ngOnInit", userdata);
           // SET USERDATA IF USER HAS ANY STORED in DB //
-          this.eventsToBeRated      = userdata.user.eventsToBeRated;
+          this.eventsToBeRated      = userdata.eventsToBeRated;
           this.user.username        = userdata.user.username;
           this.user.email           = userdata.user.email;
           this.user.description     = userdata.user.description;
-          this.user.birthdate       = userdata.user.birthdate;
+          this.user.address_lat     = userdata.user.address_lat;
+          this.user.address_lng     = userdata.user.address_lng;
+
+          let birthdate = new Date(userdata.user.birthdate);
+          let month = (birthdate.getMonth()+1)+"";
+          if( month.length === 1){
+            month = "0" + month;
+
+          }
+          let datestring = birthdate.getFullYear() + "-" + month  + "-" +  birthdate.getDate();
+          console.log("datestring" ,datestring);
+          this.user.birthdate       = datestring;
+          
+
+
           this.user.address         = userdata.user.address;
           this.user.city            = userdata.user.city;
 

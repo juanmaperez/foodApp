@@ -14,8 +14,11 @@ import { Component, OnInit } from '@angular/core';
 export class EventsComponent implements OnInit {
 
   events: Array<object> = [];
-
-  constructor(private apiService: ApiService) { }
+  userID: any;
+  constructor(
+    private apiService      : ApiService,
+    private session         : SessionService
+  ) { }
 
   ngOnInit() {
 
@@ -23,6 +26,9 @@ export class EventsComponent implements OnInit {
       .subscribe((events)=>{
         this.events = events
       })
+
+      this.userID = this.session.user._id;
+      
   }
 
 }

@@ -10,7 +10,14 @@ button{ width: 100px ; margin-top: 30px ; padding:  12px 15px 10px 15px ; backgr
 #reviewwrapper{ margin-top: 50px; padding: 0 };
 #reviewwrapper input{ font-size: 15px; line-height : 50px ; margin-top:  10px ; margin-bottom: 10px; height: 55px; padding-left: 10px; padding-right: 10px;  }
 #reviewwrapper textarea { font-size: 15px; height: 200px; padding-left: 10px; padding-right: 10px ; padding-top: 10px; }
-.submitMsg{ position: relative; top: 20px }
+
+.submitMsg{ 
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+  display: block;
+  background-color: #d1dee2; 
+}
   /*font-family: 'Monoton', cursive;
   font-family: 'Six Caps', sans-serif;
   font-family: 'Duru Sans', sans-serif;

@@ -14,6 +14,7 @@ export class EventComponent implements OnInit {
   @Input() event: any;
   
   ngOnInit() {
+    
   }
 
 }

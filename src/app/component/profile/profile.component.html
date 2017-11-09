@@ -1,6 +1,7 @@
   <div class="container">
-        
-          <div id="profilewrapper" class="row">
+    <div class="buttonwrapper row"><a class="button toedit" [routerLink]="['/profile-edit']">Edit profile</a></div>
+    
+     <div id="profilewrapper" class="row">
               
                <div class="profiledata col-md-6">
                  <div class="profileimage" [ngStyle]="{'background-image':'url('+ user.image +')'}"></div>
@@ -25,9 +26,9 @@
                    
                     <div *ngFor="let review of reviews; let i = index; let last = last">
                       <div class="star-ratings individual">
-                          <div><span class="myrating">{{ review.rating }} %</span> positive experience</div>  
-                          <!--<div id="review{{i}}" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-                          <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>-->
+                          <!--<div><span class="myrating">{{ review.rating }} </span> positive experience</div> --> 
+                          <div id="review{{i}}" [ngStyle]="{'width': review.rating}" class="star-ratings-top"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+                          <div class="star-ratings-bottom"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
                       </div>
                       <div>
                         <hr>

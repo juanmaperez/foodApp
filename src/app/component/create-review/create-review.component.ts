@@ -30,6 +30,8 @@ export class CreateReviewComponent implements OnInit {
 
   }
 
+  //reviewSubmit : String ="";
+
   constructor(
     private api             : ApiService
   ) { }
@@ -61,6 +63,7 @@ export class CreateReviewComponent implements OnInit {
       .subscribe(
         (eventData)=>{
           console.log(eventData);
+          //this.reviewSubmit = "Your review has been submitted";
         }, 
         (err)=>{
           console.error(err)

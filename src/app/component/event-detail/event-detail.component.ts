@@ -89,6 +89,9 @@ export class EventDetailComponent implements OnInit {
     
         if(person._id == id){
           this.isJoined = true
+        }else{
+          this.isJoined = false;
+          
         }
       })
     }
@@ -111,8 +114,8 @@ export class EventDetailComponent implements OnInit {
       .subscribe((response)=>{
         this.event = response.event;
 
-        this.getEventDetails(this.event._id);
-
+        this.getEventDetails(this.event._id);      
+        
       })
   }
 
@@ -124,7 +127,8 @@ export class EventDetailComponent implements OnInit {
         this.event = response.event;
 
         this.getEventDetails(this.event._id);
-
+    
+        
       })
   }
 

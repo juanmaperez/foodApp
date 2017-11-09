@@ -10,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
     user = {
-      username : " ",
-      email : " ",
-      password : " "
+      username : "",
+      email : "",
+      password : ""
     }
 
     signupMessage = null;

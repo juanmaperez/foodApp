@@ -111,3 +111,11 @@ textarea { font-family: "Duru Sans"; font-size: 15px; height: 200px; padding-lef
     display: block;
     z-index: 0;
   }
+
+  .reviewSubmit{
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    display: block;
+    background-color: #d1dee2;
+  }

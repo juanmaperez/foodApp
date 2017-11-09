@@ -3,6 +3,12 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; }
 
  // ** MENU ICON FOR MOBILE ** //
 
+.container           { padding-top: 100px; }
+.buttonwrapper       { width: 100%;  }
+.button.toedit       { padding: 12px 15px; background-color: #A5ABAD; color: #ffffff; border-radius: 5px; position: absolute; right: 0; top: -50px; }	 
+      
+
+
 #profilewrapper{ margin-top: 50px; }
 #profilewrapper hr{ margin-top: 15px; margin-bottom: 15px }
 
@@ -71,7 +77,7 @@ div, p, h5, h4, h3{ font-family: "Duru Sans"; }
     color: #c5c5c5;
     font-size: 20px;
     height: 20px;
-    width: 100%;
+    width: 100px;
     position: relative;
     padding: 0;
     
