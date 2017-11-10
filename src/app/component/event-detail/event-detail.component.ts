@@ -76,7 +76,6 @@ export class EventDetailComponent implements OnInit {
         this.checkIsJoined(this.userID, this.allGuests)
         // console.log(typeof this.userID);
         // console.log(typeof this.host._id);
-        console.log("joined???",this.isJoined)
         
       })
   }
@@ -89,9 +88,7 @@ export class EventDetailComponent implements OnInit {
     } else {
       for(var i=0; i<people.length; i++){
         if(people[i]._id == id){
-          console.log("userID", id)
-          console.log("peopleID", people[i]._id)
-          console.log("joined?",this.isJoined)
+        
           return this.isJoined = true
         } else {
            this.isJoined = false; 
