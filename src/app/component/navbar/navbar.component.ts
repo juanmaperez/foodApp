@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
    ) { }
 
   ngOnInit() {
-  
+    console.log("isAuthSession", this.session.isAuth)
     //this.session.canActivate
     /*if(this.session.isAuth === true){
       this.loggedIn = true;

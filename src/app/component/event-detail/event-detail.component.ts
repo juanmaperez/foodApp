@@ -60,7 +60,8 @@ export class EventDetailComponent implements OnInit {
     })
     
     this.userID = this.session.user._id;
-
+    this.checkIsJoined(this.userID, this.allGuests)
+    
     
   }
   
@@ -75,6 +76,7 @@ export class EventDetailComponent implements OnInit {
         this.checkIsJoined(this.userID, this.allGuests)
         // console.log(typeof this.userID);
         // console.log(typeof this.host._id);
+        console.log("joined???",this.isJoined)
         
       })
   }
@@ -83,21 +85,19 @@ export class EventDetailComponent implements OnInit {
 
   checkIsJoined(id,people){
     if(people.length == 0){
-      this.isJoined = false;
+      return this.isJoined = false;
     } else {
-      people.forEach((person)=>{
-    
-        if(person._id == id){
-          this.isJoined = true
-        }else{
-          this.isJoined = false;
-          
+      for(var i=0; i<people.length; i++){
+        if(people[i]._id == id){
+          console.log("userID", id)
+          console.log("peopleID", people[i]._id)
+          console.log("joined?",this.isJoined)
+          return this.isJoined = true
+        } else {
+           this.isJoined = false; 
         }
-      })
+      }
     }
-  
-    
-    //console.log(this.isJoined)
     //console.log(this.event.places)
   }
 

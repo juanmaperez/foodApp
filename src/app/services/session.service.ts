@@ -57,6 +57,7 @@ export class SessionService implements CanActivate {
                     }
 
         this.isAuth = true;
+        console.log("token", token)
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(this.user));
 

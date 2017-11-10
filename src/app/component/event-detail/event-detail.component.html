@@ -46,10 +46,10 @@
         <p><i class="fa fa-map-marker"></i> {{event.address}}</p>
         <p><i class="fa fa-money"></i> {{event.contribution}} €</p>
         
-        <div>  
+        <div *ngIf="userID !== event._host">  
           <hr>
             
-          <button (click)="subscribeUser()" *ngIf="!isJoined || event.places <= 0" class="join">Join</button>
+          <button (click)="subscribeUser()" *ngIf="!isJoined && event.places > 0" class="join">Join | {{event.places}}</button>
           <button (click)="desubscribeUser()" *ngIf="isJoined" class="disjoin">Disjoin</button>
         </div>
       
