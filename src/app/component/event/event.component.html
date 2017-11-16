@@ -14,7 +14,7 @@
       <h2>{{event.title}}</h2>
       <small class="date">{{event.date | date:'dd/MM/yyyy'}} - {{event.date | date: "HH:mm"}}</small>
       <a *ngIf="event._host == this.userID" class="edit-event" [routerLink]="['/events/update', event._id ]"><i class="fa fa-pencil"></i></a>
-      <small class="description">{{event.description}}</small>
+      <small class="description">{{event._host}}|{{this.userID}} {{event.description}}</small>
     </div>
   
   </div>

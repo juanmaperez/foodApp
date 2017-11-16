@@ -22,13 +22,20 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.apiService.getEventsList()
-      .subscribe((events)=>{
-        this.events = events
-      })
-
-      this.userID = this.session.user._id;
+    this.getEvents();
       
+
+    this.userID = this.session.user._id;
+      
+  }
+
+
+
+  getEvents(){
+    this.apiService.getEventsList()
+    .subscribe((events)=>{
+      this.events = events
+    })
   }
 
 }
