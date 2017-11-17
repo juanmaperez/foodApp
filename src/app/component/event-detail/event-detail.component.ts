@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { EventCommentFormComponent } from './../event-comment-form/event-comment-form.component';
 import { routes } from './../../app.module';
 import { MapsAPILoader } from '@agm/core';
@@ -7,6 +8,7 @@ import { SessionService } from './../../services/session.service';
 import { Component, OnInit, Input, NgZone, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SlicePipe } from '@angular/common';
+
 
 @Component({
   selector: 'event-detail',
@@ -56,13 +58,13 @@ export class EventDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.getEventDetails(params.id);
+      this.getEventDetails(params.id)     
     })
     
     this.userID = this.session.user._id;
     this.checkIsJoined(this.userID, this.allGuests)
     
-    
+   
   }
   
   getEventDetails(id) {
@@ -75,7 +77,7 @@ export class EventDetailComponent implements OnInit {
         // console.log(this.comments)
         this.checkIsJoined(this.userID, this.allGuests)
         // console.log(typeof this.userID);
-        // console.log(typeof this.host._id);
+         //console.log( this.host._id);
         
       })
   }
