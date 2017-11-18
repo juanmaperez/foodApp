@@ -83,6 +83,7 @@ export class SessionService implements CanActivate {
                     }
 
         this.isAuth = true;
+        this.loggedIn = true;
         console.log("token", token)
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(this.user));
@@ -103,6 +104,8 @@ export class SessionService implements CanActivate {
     console.log(localStorage.getItem( 'user'));
 
     this.isAuth = false;
+    this.loggedIn = false;
+    
     console.log("this.isAuth",this.isAuth);
     this.router.navigate(['/']);
   }
@@ -122,6 +125,8 @@ export class SessionService implements CanActivate {
                     }
     
         this.isAuth = true;
+        this.loggedIn = true;
+        
         localStorage.setItem( 'token', token);
         localStorage.setItem( 'user', JSON.stringify(this.user));
     
