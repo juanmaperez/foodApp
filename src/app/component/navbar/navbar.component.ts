@@ -9,38 +9,20 @@ import { Router }                       from '@angular/router';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  loggedIn     : Boolean = false;
+
   userId       : String = "";
   mobileMenuVisible   : Boolean = false;
+  isLogged : boolean
 
-  constructor(
-    
+  constructor(    
     private router          : Router,
     private session         : SessionService
     
    ) { }
 
   ngOnInit() {
-    console.log("isAuthSession", this.session.isAuth)
-    //this.session.canActivate
-    /*if(this.session.isAuth === true){
-      this.loggedIn = true;
-      console.log("loggedIN")
-    }else if(this.session.isAuth === false){
-      console.log("loggedOut")
-      this.loggedIn = false;
-    }*/
-    
-    if(localStorage.getItem('token')!= undefined){
-      this.userId = localStorage.getItem( 'user');
-      if(this.userId != undefined || this.userId === ""){
-        this.loggedIn = true; 
-        console.log(this.loggedIn); 
-      }
-    } 
-    else{
-      this.loggedIn = false;
-    }
+
+    this.session.checkLoggedIn();
     
     document.getElementById('menu-png').addEventListener("click", this.toggleMenu);
     let mobilemenu = document.getElementById('mobile-menu')
@@ -59,14 +41,13 @@ export class NavbarComponent implements OnInit {
     }
 
   } 
+
+  
   hideMobileMenu(){
     let mobilemenu = document.getElementById('mobile-menu');
     mobilemenu.style.display = "none";
     this.mobileMenuVisible = false;
   }
-  changeValueNavbar(myboolean){
-    console.log("changeValuenavbar", myboolean);
-    this.loggedIn = myboolean
-  }
+
 
 }

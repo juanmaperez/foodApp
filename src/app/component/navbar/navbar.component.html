@@ -1,20 +1,20 @@
 <header>
   <div id="MENUWRAPPER">
-    <a *ngIf="loggedIn === true" class="button profile" [routerLink]="['/profile']">My profile</a>
+    <a *ngIf="this.session.loggedIn" class="button profile" [routerLink]="['/profile']">My profile</a>
     <a class="button signup" [routerLink]="['/signup']">Join us</a>
-    <a *ngIf="loggedIn === false" class="button login" [routerLink]="['/login']">Log in</a>
-    <a *ngIf="loggedIn === true"  class="button logout" [routerLink]="['/logout']">Log out</a>
+    <a *ngIf="!this.session.loggedIn" class="button login" [routerLink]="['/login']">Log in</a>
+    <a *ngIf="this.session.loggedIn"  class="button logout" [routerLink]="['/logout']">Log out</a>
     <a class="events" [routerLink]="['/events']">Find Events</a>
     <a class="behost" [routerLink]="['events/create']">Create event</a>
   </div>
   <div id="menu-png"><img (click)="toggleMenu" src="assets/images/menu.png" width="30"></div>
   <div id="mobile-menu">
     
-      <a *ngIf="loggedIn === false" [routerLink]="['/login']">Login</a>
+      <a *ngIf="!this.session.loggedIn" [routerLink]="['/login']">Login</a>
       <hr>
-      <a *ngIf="loggedIn === true" [routerLink]="['/logout']">Logout</a>
+      <a *ngIf="this.session.loggedIn" [routerLink]="['/logout']">Logout</a>
       <hr>
-      <a *ngIf="loggedIn === true" [routerLink]="['/profile']">Profile</a>
+      <a *ngIf="this.session.loggedIn" [routerLink]="['/profile']">Profile</a>
       <hr>
       <a [routerLink]="['/signup']">Signup</a>  
       <hr>    

@@ -20,9 +20,14 @@ export class EventComponent implements OnInit {
   
 
   ngOnInit() {
-    let userData = localStorage.getItem('user');
-    this.userID = JSON.parse(userData)._id
-    
+
+    if(localStorage.getItem('user')){
+      let userData = localStorage.getItem('user');
+      this.userID = JSON.parse(userData)._id
+      
+
+    }
+
   }
 
 }

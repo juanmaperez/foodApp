@@ -10,7 +10,8 @@ export class SessionService implements CanActivate {
   
   //session is in appmodule so that all component can access the following three variables token, isAuth and user
   public token : String ='';
-  public isAuth: boolean = false;
+  public isAuth: Boolean = false;
+  public loggedIn: Boolean = false;
   public user: any = {};
   private BASE_URL: String = 'http://localhost:3000';
   constructor( private http: Http, private router: Router ) { }
@@ -39,6 +40,31 @@ export class SessionService implements CanActivate {
       return false;
     }
 
+  }
+
+  checkLoggedIn(){
+    console.log("Inside checkLoggedIn")
+    if(localStorage.getItem('token')){
+      const headers = new Headers({ 'Authorization': 'JWT ' + localStorage.getItem('token')});
+      const options = new RequestOptions({ headers: headers });
+      return this.http.get(`${this.BASE_URL}/token`, options)
+        .toPromise()
+        .then((res) => res.json())
+        /*Parse to JSON->This is not Angular's own design. The Angular HTTP client follows the Fetch specification for the response object returned by the Fetch function. That spec defines a json() method that parses the response body into a JavaScript object.*/
+        .then((data) => {
+          this.loggedIn = true;
+          this.user = JSON.parse( localStorage.getItem('user') );
+          this.token = localStorage.getItem('token');
+          //this.router.navigate(['/logout'])
+          return true;
+        })
+        .catch((err) => {
+          return false; 
+        })
+    }else{
+      //this.logout()
+      return false;
+    }
   }
 
   login(user){
